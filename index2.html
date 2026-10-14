@@ -173,8 +173,8 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .pt.on .prog s{animation:fill 8s linear forwards}
 .plat.paused .pt.on .prog s{animation-play-state:paused}
 @keyframes fill{to{width:100%}}
-.pcard{margin-top:16px;position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:stretch;padding:48px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%),var(--bg2);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);height:640px;overflow:hidden}
-.pc-copy{display:flex;flex-direction:column;animation:rise .5s both}
+.pcard{margin-top:16px;position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:stretch;padding:48px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%),var(--bg2);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);height:600px;overflow:hidden}
+.pc-copy{display:flex;flex-direction:column;justify-content:center;animation:rise .5s both}
 .pc-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font:600 13px/1 var(--font);padding:7px 12px;border-radius:999px;background:#262626;border:1px solid #424242}
 .pc-tag i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
 .pc-copy h3{margin-top:20px;font:500 clamp(28px,3vw,42px)/1.08 var(--head);letter-spacing:-.01em}
@@ -185,7 +185,7 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .pc-stat{margin-top:24px;display:flex;align-items:baseline;min-width:0;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
 .pc-stat b{font:500 34px/1 var(--head);color:var(--c)}
 .pc-stat span{font:400 15px/1.4 var(--font);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pc-ctas{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.pc-ctas{margin-top:0;padding-top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .pc-vis{position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-height:0;animation:popin .6s .1s both}
 .pc-vis .tile-visual{position:absolute;inset:28px 0 0 0;margin:0;min-height:0}
 .pc-more{position:absolute;z-index:4;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid var(--line2);font:600 13px/1 var(--font)}
@@ -891,7 +891,7 @@ const PERSONAS = [
     sw:'linear-gradient(110deg,#ffb36b 0%,#ff6aa2 40%,#a46bff 75%,#6f7bff 100%)',
     title:'Your first game starts with a sentence',
     desc:'Never opened a game engine? Describe your world in Unity Spark and play it in minutes, then let Unity Learn walk you into the Editor.',
-    checks:['Turn an idea into something playable today','Learn real skills with free, guided pathways','Move into the Editor when you’re ready'],
+    checks:['Turn an idea into something playable today','Move into the Editor when you’re ready'],
     stat:['Free','to start. No credit card, no install.'],
     ctas:[['Try Unity Spark','https://unity.com/spark'],['Explore Unity Learn','https://learn.unity.com/']],
     start:'spark', products:['spark','learn','editor'], modal:['games',0] },
@@ -899,7 +899,7 @@ const PERSONAS = [
     sw:'linear-gradient(120deg,#5ee2a0 0%,#3fb8ff 45%,#7d6bff 100%)', rot:'-14deg',
     title:'Ship your game by hand, or with your agent',
     desc:'Write every line yourself or pair with Claude Code, Codex or Cursor. Either way, you’re building on the engine behind thousands of hits.',
-    checks:['Download the Editor and start free','Let your agent build and edit a real Unity project','Ship to PC, console, mobile and web'],
+    checks:['Download the Editor and start free','Ship to PC, console, mobile and web'],
     stat:['25+','platforms from one project.'],
     ctas:[['Download Unity','https://unity.com/download'],['Connect your agent','https://unity.com/features/ai']],
     start:'editor', products:['editor','ai','assets','spark'], modal:['games',1] },
@@ -907,7 +907,7 @@ const PERSONAS = [
     sw:'linear-gradient(120deg,#9aa7ff 0%,#6f7bff 40%,#533afd 100%)', rot:'-6deg',
     title:'Build A+ games, on every platform',
     desc:'From live-service hits to console launches, studios ship at scale on Unity, with AI that fits your pipeline on your terms.',
-    checks:['Performance and platform support for every target','Version control, builds and multiplayer services','AI tooling with model choice and governance'],
+    checks:['Performance and platform support for every target','AI tooling with model choice and governance'],
     stat:['70%+','of top 1,000 mobile games use Unity.'],
     ctas:[['Explore Unity 6','https://unity.com/products/unity-engine'],['Talk to sales','https://unity.com/contact-us']],
     start:'editor', products:['editor','cloud','ai','assets'], modal:['games',2] },
@@ -915,7 +915,7 @@ const PERSONAS = [
     sw:'linear-gradient(120deg,#ffd166 0%,#ff9b6a 45%,#ff5f6d 100%)', rot:'-14deg',
     title:'Acquire players and grow your revenue',
     desc:'Launch day is the start. Vector finds the players most likely to stay, and LevelPlay turns every session into revenue.',
-    checks:['Buy installs from players who stay','Earn more from every ad with mediation','See retention and revenue in one place'],
+    checks:['Buy installs from players who stay','See retention and revenue in one place'],
     stat:['5x','IAP and ARPDAU growth at Metacore.'],
     ctas:[['Advertise with Unity','https://cloud.unity.com/acquire'],['Monetize with LevelPlay','https://unity.com/products/levelplay']],
     start:'grow', products:['grow','levelplay','cloud'], modal:['monetize'] },
@@ -923,7 +923,7 @@ const PERSONAS = [
     sw:'linear-gradient(110deg,#3fb8ff 0%,#6f7bff 45%,#a46bff 80%,#ff6aa2 100%)', rot:'-10deg',
     title:'Build the future in 3D, for industries beyond games',
     desc:'The real-time 3D behind games now powers configurators, digital twins and training. Bring in your CAD data and deploy anywhere.',
-    checks:['Bring CAD data in with Pixyz','Build digital twins and configurators','Deploy to web, mobile and XR'],
+    checks:['Bring CAD data in with Pixyz','Deploy to web, mobile and XR'],
     stat:['30','days free, Pixyz included.'],
     ctas:[['Start 30-day trial','https://unity.com/products/unity-industry'],['Talk to sales','https://unity.com/contact-us']],
     start:'industry', products:['industry','cloud','learn'], modal:['industry'] },
