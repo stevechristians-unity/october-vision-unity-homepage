@@ -59,7 +59,7 @@ img{display:block;max-width:100%}
 .pill.blue{background:var(--blue);box-shadow:var(--bevel)}.pill.blue:hover{background:var(--blue2)}
 
 /* ---------- Header ---------- */
-.nav{position:sticky;top:0;z-index:60;height:56px;background:rgba(0,0,0,.92);backdrop-filter:blur(14px);display:flex;align-items:center;padding:0 16px;gap:6px}
+.nav{position:sticky;top:0;z-index:60;height:56px;background:transparent;transition:background .3s,backdrop-filter .3s;display:flex;align-items:center;padding:0 16px;gap:6px}
 .brandbox{display:flex;align-items:center;gap:2px;margin-right:22px}
 .logo{display:flex;align-items:center;height:56px;padding:0 6px}
 .logo svg{width:24px;height:auto}
@@ -131,18 +131,19 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .band-spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at calc(var(--mx) * 100%) calc(var(--my) * 100%),rgba(255,140,190,.26),rgba(123,92,255,.12) 40%,transparent 70%);transition:opacity .4s}
 .band-grid{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at calc(var(--mx) * 100%) calc(var(--my) * 100%),#000 10%,transparent 62%);-webkit-mask-image:radial-gradient(ellipse at calc(var(--mx) * 100%) calc(var(--my) * 100%),#000 10%,transparent 62%)}
 
-.hero{border-bottom:1px solid rgba(255,255,255,.12);padding:clamp(96px,12vh,144px) 0 clamp(96px,12vh,144px);min-height:min(62vh,610px);display:flex;align-items:center}
+.nav.scrolled{background:rgba(10,8,18,.55);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4)}
+.hero{margin-top:-56px;border-bottom:1px solid rgba(255,255,255,.12);padding:calc(clamp(96px,12vh,144px) + 56px) 0 clamp(96px,12vh,144px);min-height:min(62vh,610px);display:flex;align-items:center}
 .hero .wrap{width:100%;text-align:center}
 .h-line1{display:block;font:500 clamp(52px,7.6vw,112px)/.98 var(--head);letter-spacing:-.025em}
 .h-line2{display:block;margin-top:30px;font:500 clamp(22px,2.8vw,38px)/1.3 var(--font);letter-spacing:-.015em;color:#e4e4ea}
 .rot{display:inline-block;position:relative;vertical-align:middle;height:1.6em;overflow:hidden;transition:width .45s cubic-bezier(.2,.8,.2,1);margin:-.2em .08em 0;text-align:left}
-.rot button{position:absolute;left:0;top:.12em;height:1.36em;display:inline-flex;align-items:center;gap:.22em;padding:0 .34em 0 .5em;border-radius:.32em;background:rgba(125,107,255,.18);backdrop-filter:blur(6px);color:var(--accent2);font-weight:600;white-space:nowrap;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s,background .2s}
+.rot button{position:absolute;left:0;top:.12em;height:1.36em;display:inline-flex;align-items:center;gap:.22em;padding:0 .34em 0 .5em;border-radius:.32em;background:rgba(125,107,255,.3);backdrop-filter:blur(6px);color:#c2b8ff;font-weight:600;white-space:nowrap;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s,background .2s}
 .paths{margin-top:34px;font:400 14px/22px var(--font);color:#c9c9cf}
 .paths a{color:#fff;font-weight:600;margin:0 8px;border-bottom:1px solid rgba(255,255,255,.3);transition:border-color .2s}
 .paths a:hover{border-color:#fff}
 .paths i{font-style:normal;color:#8f8f98}
 .rot button svg{width:.72em;height:.72em}
-.rot button:hover{background:rgba(125,107,255,.3);color:#c2b8ff}
+.rot button:hover{background:rgba(125,107,255,.18);color:var(--accent2)}
 .rot button.out{transform:translateY(-110%);opacity:0}
 .rot button.in{transform:translateY(110%);opacity:0}
 
@@ -172,7 +173,7 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .pt.on .prog s{animation:fill 8s linear forwards}
 .plat.paused .pt.on .prog s{animation-play-state:paused}
 @keyframes fill{to{width:100%}}
-.pcard{margin-top:16px;position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:stretch;padding:48px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%),var(--bg2);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);min-height:500px;overflow:hidden}
+.pcard{margin-top:16px;position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:stretch;padding:48px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%),var(--bg2);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);height:640px;overflow:hidden}
 .pc-copy{display:flex;flex-direction:column;animation:rise .5s both}
 .pc-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font:600 13px/1 var(--font);padding:7px 12px;border-radius:999px;background:#262626;border:1px solid #424242}
 .pc-tag i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
@@ -184,8 +185,8 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .pc-stat{margin-top:24px;display:flex;align-items:baseline;min-width:0;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
 .pc-stat b{font:500 34px/1 var(--head);color:var(--c)}
 .pc-stat span{font:400 15px/1.4 var(--font);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pc-ctas{margin-top:auto;padding-top:28px;display:flex;gap:10px;flex-wrap:wrap}
-.pc-vis{position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-height:460px;animation:popin .6s .1s both}
+.pc-ctas{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.pc-vis{position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);min-height:0;animation:popin .6s .1s both}
 .pc-vis .tile-visual{position:absolute;inset:28px 0 0 0;margin:0;min-height:0}
 .pc-more{position:absolute;z-index:4;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid var(--line2);font:600 13px/1 var(--font)}
 .pc-more:hover{background:var(--accent)}
@@ -375,6 +376,7 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 .feat p{margin-top:20px;font:400 17px/1.6 var(--font);color:var(--ink2)}
 .feat .btns{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .unified{padding:120px 0 30px;text-align:center}
+.unified .lead{margin-left:auto;margin-right:auto}
 .unified .h2{font-size:clamp(36px,4.6vw,66px)}
 
 /* suite (top level) */
@@ -538,7 +540,9 @@ button.person-node{width:100%;text-align:left}
 @media (max-width:1000px){
   .nav-links{display:none}
   .pt-rail{grid-template-columns:repeat(5,minmax(150px,1fr));overflow-x:auto;scrollbar-width:none}
-  .pcard{grid-template-columns:1fr;padding:28px}
+  .pcard{grid-template-columns:1fr;padding:28px;height:auto;min-height:0}
+  .nav{background:#000!important;backdrop-filter:none!important}
+  .hero{margin-top:0!important;padding-top:clamp(96px,12vh,144px)!important}
   .feat,.feat.rev{grid-template-columns:1fr;gap:28px}
   .feat.rev .feat-media{order:0}
   .cards3{grid-template-columns:1fr}
@@ -840,6 +844,8 @@ const setEco = open => {
 $('ecoBtn').onclick = () => setEco(!document.body.classList.contains('eco-open'));
 $('ecoClose').onclick = $('ecoScrim').onclick = () => setEco(false);
 
+(function(){ const nav = $('nav'), hero = $('hero'); const upd = () => nav.classList.toggle('scrolled', hero.getBoundingClientRect().bottom < 56); addEventListener('scroll', upd, { passive:true }); upd(); })();
+
 /* =================== Gradient bands: colours drift toward the mouse =================== */
 document.querySelectorAll('.band').forEach(band => {
   const blobs = [...band.querySelectorAll('.band-bg span')];
@@ -1023,7 +1029,7 @@ const visual = g => `<div class="tile-visual"><div class="swoosh" style="--sw:${
     c.innerHTML = `<div class="pc-copy"><span class="pc-tag"><i></i>${p.tag}</span><h3>${p.title}</h3><p>${p.desc}</p>
         <ul>${p.checks.map(x=>`<li>${x}</li>`).join('')}</ul>
         <div class="pc-stat"><b>${p.stat[0]}</b><span>${p.stat[1]}</span></div>
-        <div class="pc-ctas"><a class="ubtn fill" href="${p.ctas[0][1]}" target="_blank" rel="noopener">${p.ctas[0][0]} ${ARROW}</a><a class="ubtn line" href="${p.ctas[1][1]}" target="_blank" rel="noopener">${p.ctas[1][0]}</a><button class="ubtn text" type="button" data-open="${i}">See your full path ${ARROW}</button></div></div>
+        <div class="pc-ctas"><a class="ubtn fill" href="${p.ctas[0][1]}" target="_blank" rel="noopener">${p.ctas[0][0]} ${ARROW}</a><a class="ubtn line" href="${p.ctas[1][1]}" target="_blank" rel="noopener">${p.ctas[1][0]}</a></div></div>
       <div class="pc-vis">${visual(p)}</div>`;
     restart();
   };
@@ -1065,7 +1071,7 @@ const visual = g => `<div class="tile-visual"><div class="swoosh" style="--sw:${
     cur = i; const p = PERSONAS[i];
     box.querySelectorAll('.person-node').forEach((n,k) => n.classList.toggle('on', k === i));
     box.querySelectorAll('.product-node').forEach(n => { const k = n.dataset.k; n.classList.toggle('on', p.products.includes(k)); n.classList.toggle('is-start', k === p.start); const em = n.querySelector('em'); if (em) em.remove(); if (k === p.start) n.insertAdjacentHTML('beforeend','<em>Start here</em>'); });
-    $('suiteCap').innerHTML = `<span><b>${p.tag}</b> usually start with</span>${chip(p.start)}<span>then add ${p.products.filter(k=>k!==p.start).map(k=>SUITE[k].name).join(', ')}.</span><button class="ubtn line" type="button" data-open="${i}">See the path ${ARROW}</button>`;
+    $('suiteCap').innerHTML = `<span><b>${p.tag}</b> usually start with</span>${chip(p.start)}<span>then add ${p.products.filter(k=>k!==p.start).map(k=>SUITE[k].name).join(', ')}.</span>`;
     draw();
     clearTimeout(timer);
     const bar = box.querySelector('.person-node.on .prog s'); if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
