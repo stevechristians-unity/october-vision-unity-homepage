@@ -853,6 +853,92 @@ body.chat-open .chat .chatdock{position:absolute;transform:translate(-50%,0);opa
 @media (max-width:1000px){ .lc-rail{grid-template-columns:repeat(3,1fr)} .lc-panel{grid-template-columns:1fr;padding:28px} }
 @media (max-width:560px){ .lc-rail{grid-template-columns:repeat(2,1fr)} .cad-body{grid-template-columns:1fr} }
 
+
+/* Get started button (unity.com blue) */
+.btn-d.go{background:var(--u-blue);color:#fff;box-shadow:var(--bevel)}
+.btn-d.go:hover{background:var(--u-blue-2)}
+
+/* Welcome screen: full width and height */
+.welcome{position:fixed;inset:0;z-index:200;background:#1b1b1b;display:flex;flex-direction:column;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s}
+body.welcome-open .welcome{opacity:1;pointer-events:auto}
+body.welcome-open{overflow:hidden}
+body.welcome-open .dock{opacity:0;pointer-events:none}
+.w-close{position:fixed;top:20px;right:24px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid #3a3a3a;background:#232323;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 #424242;transition:background .2s}
+.w-close:hover{background:#303030}
+.w-close svg{width:18px;height:18px}
+.w-inner{flex:1;width:min(980px,100%);margin:0 auto;padding:clamp(56px,9vh,110px) 20px 40px;display:flex;flex-direction:column;align-items:center}
+.w-mark{width:56px;height:56px}
+.w-inner h1{margin-top:22px;font:600 clamp(34px,4.2vw,52px)/1.1 var(--font);letter-spacing:-.02em;text-align:center}
+.w-list{width:100%;margin-top:44px;display:grid;gap:18px}
+.w-card{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:30px 30px 30px 36px;border-radius:12px;border:1px solid #333;background:#232323;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+body.welcome-open .w-card{animation:popin .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 70ms + 80ms)}
+.w-card.spark{border-color:rgba(255,106,162,.35);background:radial-gradient(120% 160% at 0% 0%,rgba(255,106,162,.14),rgba(125,107,255,.08) 45%,#232323 75%)}
+.w-ico{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--c);background:color-mix(in srgb,var(--c) 18%,#232323)}
+.w-ico svg{width:22px;height:22px}
+.w-copy h2{display:flex;align-items:center;gap:10px;font:600 22px/1.25 var(--font);letter-spacing:-.01em}
+.w-copy h2 em{font:600 11px/1 var(--font);font-style:normal;padding:5px 8px;border-radius:999px;background:linear-gradient(90deg,#ff6aa2,#a46bff);color:#fff}
+.w-copy p{margin-top:10px;font:400 16px/1.55 var(--font);color:#b9b9c0;max-width:560px}
+.w-btn{min-width:240px;height:52px;padding:0 26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--font);color:#fff;border:1px solid #4a4a4a;background:transparent;transition:background .2s,border-color .2s;white-space:nowrap}
+.w-btn:hover{background:#2c2c2c;border-color:#666}
+.w-btn svg{width:18px;height:18px}
+.w-btn.blue{background:#0b6fd3;border-color:#0b6fd3;box-shadow:var(--bevel)}
+.w-btn.blue:hover{background:#1a7fe6}
+.w-dash{margin-top:34px;font:500 17px/1 var(--font);color:#5ea8ff}
+.w-dash:hover{text-decoration:underline}
+.w-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:26px clamp(20px,8vw,180px) 30px}
+.w-foot nav{display:flex;flex-wrap:wrap;gap:8px 28px}
+.w-foot a{font:400 15px/1.4 var(--font);color:#b9b9c0}
+.w-foot a:hover{color:#fff}
+.w-lang{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 14px;border-radius:8px;border:1px solid #3a3a3a;background:#232323;color:#fff}
+.w-lang svg{width:20px;height:20px;color:#b9b9c0}
+.w-lang select{background:transparent;color:#fff;font:500 15px/1 var(--font);border:0;outline:0;padding-right:6px}
+.w-lang option{background:#232323}
+@media (max-width:760px){ .w-card{grid-template-columns:auto 1fr;padding:22px} .w-btn{grid-column:1/-1;width:100%;min-width:0} }
+
+/* Suite graphic on the homepage */
+.home-suite{margin-top:0}
+.home-suite .m-suite-h h3{font-size:clamp(26px,3vw,42px)}
+.home-suite .person-node{cursor:pointer;width:100%;text-align:left;position:relative;overflow:hidden}
+.home-suite .person-node:hover{color:#fff;border-color:var(--line2)}
+.home-suite .person-node .hs-prog{position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent}
+.home-suite .person-node.on .hs-prog s{display:block;height:100%;width:0;background:#fff;animation:lcfill 4.5s linear forwards}
+.home-suite.paused .person-node.on .hs-prog s{animation-play-state:paused}
+.hs-foot{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap;font:400 15px/1.5 var(--font);color:var(--ink2)}
+.hs-foot b{color:#fff}
+
+
+.nav-links a{white-space:nowrap}
+.nav-right{flex:none}
+@media (max-width:1320px){ .nav-links{gap:16px;margin-left:8px} .nav-right .ghost{display:none} }
+
+
+/* "Where you fit" graphic, matched to v2 */
+.m-suite{padding:48px;border-radius:20px;background:radial-gradient(120% 120% at 0% 0%,rgba(125,107,255,.16),transparent 55%),var(--bg2);border:1px solid var(--line);box-shadow:none}
+.m-suite-h{align-items:flex-end;gap:24px}
+.m-suite .m-k{font:600 13px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:#c9c0ff;margin-bottom:0}
+.m-suite-h h3,.home-suite .m-suite-h h3{margin-top:14px;font:500 clamp(26px,3vw,42px)/1.12 var(--font);letter-spacing:-.01em}
+.m-suite-h p{max-width:420px;font:400 16px/1.55 var(--font);color:var(--ink2)}
+.suite{margin-top:34px;grid-template-columns:minmax(190px,260px) minmax(80px,1fr) minmax(250px,380px)}
+.suite-links path{stroke:rgba(255,255,255,.07)}
+.suite-node{transition:all .35s;position:relative;overflow:hidden}
+.person-node.on{color:#fff;background:var(--card3);border-color:rgba(255,255,255,.4);box-shadow:none}
+.person-node.on i{box-shadow:0 0 10px var(--pc,currentColor)}
+.product-node.is-start{border-color:rgba(51,88,212,.9);background:linear-gradient(90deg,rgba(51,88,212,.3),var(--card2));box-shadow:none}
+.suite-node em,.m-kit li em{background:#3358d4}
+.product-node:not(.on){opacity:.42}
+.home-suite .person-node .hs-prog{height:3px;background:rgba(255,255,255,.06);opacity:0}
+.home-suite .person-node.on .hs-prog{opacity:1}
+.home-suite .person-node.on .hs-prog s{background:var(--pc,#fff)}
+.hs-foot{margin-top:30px;padding-top:24px;gap:10px;font:400 15px/1.5 var(--font);color:var(--ink2)}
+.hs-foot .pchip{height:28px;font-size:13px}
+@media (max-width:560px){ .m-suite{padding:22px} }
+
+.m-suite-h{flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.m-suite-h p{margin-top:2px}
+
+.modal .m-suite{margin-top:64px}
+.modal .m-suite + .m-visuals{margin-top:24px}
+
 /* ================= Responsive ================= */
 @media (max-width:1100px){
   .nav-links{display:none}
@@ -1099,7 +1185,7 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
 <div class="announce" id="announce"><div class="ann-inner"><span class="ann-new">NEW</span><span class="ann-title">Unity Spark is here.</span><span class="ann-copy">Prompt it. Perfect it. Publish it. Turn one sentence into a playable game, right in your browser.</span><a class="ann-cta" href="https://unity.com/spark">Join the waitlist →</a></div></div>
 <header class="nav" id="nav">
   <div class="brandbox">
-    <button class="chev" id="ecoBtn" aria-expanded="false" aria-controls="eco" aria-label="Open the Unity ecosystem menu">
+    <button class="chev" id="ecoBtn" aria-expanded="false" aria-controls="eco" aria-label="Discover Unity">
       <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#eee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <a class="logo" href="#" id="homeLogo" aria-label="Unity home" title="Back to the homepage"><svg viewBox="0 0 92 32" width="92" height="32" role="img" aria-label="Unity" fill="none"><path fill="white" d="M15.4079 5.72524L20.4728 8.65176C20.656 8.75399 20.6603 9.0394 20.4728 9.14164L14.4537 12.6177C14.2705 12.7242 14.0575 12.7157 13.8871 12.6177L7.86794 9.14164C7.68477 9.0394 7.68051 8.75399 7.86794 8.65176L12.9329 5.7295V0L0 7.46326V22.3898L4.95847 19.5272V13.6784C4.95847 13.4696 5.20128 13.3206 5.38445 13.4356L11.4036 16.9116C11.5868 17.0181 11.689 17.2055 11.689 17.4015V24.3536C11.6933 24.5623 11.4505 24.7114 11.2673 24.6006L6.20234 21.6741L1.24388 24.5367L14.1725 32L27.1012 24.5367L22.1427 21.6741L17.0777 24.6006C16.8988 24.7071 16.6475 24.5708 16.6518 24.3536V17.4015C16.6518 17.1928 16.7668 17.0096 16.9372 16.9116L22.9563 13.4356C23.1352 13.3248 23.3866 13.4654 23.3823 13.6826V19.5314L28.3408 22.394V7.46326L15.4079 0V5.72524Z"/><path fill="white" d="M44.771 17.5548C44.771 19.0586 43.9318 20.132 42.1725 20.132C40.3024 20.132 39.5314 19.1224 39.5314 17.6187V8.42596H35.7316V17.4909C35.7316 21.0777 37.8786 23.1821 42.1768 23.1821C46.475 23.1821 48.5793 21.0351 48.5793 17.4909V8.42596H44.7796V17.5548H44.771Z"/><path fill="white" d="M57.4015 11.5826C55.8765 11.5826 54.8243 12.2258 54.0064 13.41H53.9425V11.9063H50.5687V22.9052H54.0703V16.8264C54.0703 15.4718 54.8456 14.5048 56.0043 14.5048C57.1629 14.5048 57.721 15.3014 57.721 16.4601V22.9052H61.2226V15.7529C61.2226 13.3035 59.8041 11.5868 57.3972 11.5868L57.4015 11.5826Z"/><path fill="white" d="M66.5303 7.54419H63.0287V10.3813H66.5303V7.54419Z"/><path fill="white" d="M66.5303 11.9063H63.0287V22.9052H66.5303V11.9063Z"/><path fill="white" d="M72.6943 8.42596H69.278V11.9063H67.8168V14.7433H69.278V20.0042C69.278 22.3685 70.7391 23.033 72.7795 23.033C73.7252 23.033 74.3898 22.9478 74.6922 22.8626V20.3067C74.5644 20.3067 74.2194 20.328 73.9169 20.328C73.1672 20.328 72.6943 20.115 72.6943 19.2545V14.7476H74.6922V11.9105H72.6943V8.43022V8.42596Z"/><path fill="white" d="M82.147 16.5879C81.8019 17.6614 81.5037 19.1225 81.5037 19.1225H81.4611C81.4611 19.1225 81.1161 17.6614 80.7753 16.5879L79.2929 11.9063H75.5996L78.8413 20.3706C79.2929 21.5293 79.5059 22.1768 79.5059 22.6454C79.5059 23.3951 79.0969 23.8041 78.066 23.8041H76.8648V26.5304H79.1395C81.3504 26.5304 82.4026 25.6273 83.2843 23.0501L87.0841 11.902H83.5825L82.1427 16.5836L82.147 16.5879Z"/></svg></a>
@@ -1108,19 +1194,62 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
   <div class="nav-right">
     <a class="btn-d ghost" href="#">Sign in</a>
     <a class="btn-d primary" href="https://unity.com/download">Download Unity</a>
+    <button class="btn-d go" id="getStarted" type="button">Get started</button>
   </div>
 </header>
 
-<!-- Ecosystem drawer -->
+
+<!-- Get started: full-screen welcome -->
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wTitle" aria-hidden="true">
+  <button class="w-close" id="wClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <div class="w-inner">
+    <div class="w-logo"><svg viewBox="0 0 32 32" width="64" height="64" role="img" aria-label="Unity" class="w-mark" fill="none"><path fill="white" d="M15.4079 5.72524L20.4728 8.65176C20.656 8.75399 20.6603 9.0394 20.4728 9.14164L14.4537 12.6177C14.2705 12.7242 14.0575 12.7157 13.8871 12.6177L7.86794 9.14164C7.68477 9.0394 7.68051 8.75399 7.86794 8.65176L12.9329 5.7295V0L0 7.46326V22.3898L4.95847 19.5272V13.6784C4.95847 13.4696 5.20128 13.3206 5.38445 13.4356L11.4036 16.9116C11.5868 17.0181 11.689 17.2055 11.689 17.4015V24.3536C11.6933 24.5623 11.4505 24.7114 11.2673 24.6006L6.20234 21.6741L1.24388 24.5367L14.1725 32L27.1012 24.5367L22.1427 21.6741L17.0777 24.6006C16.8988 24.7071 16.6475 24.5708 16.6518 24.3536V17.4015C16.6518 17.1928 16.7668 17.0096 16.9372 16.9116L22.9563 13.4356C23.1352 13.3248 23.3866 13.4654 23.3823 13.6826V19.5314L28.3408 22.394V7.46326L15.4079 0V5.72524Z"/><path fill="white" d="M44.771 17.5548C44.771 19.0586 43.9318 20.132 42.1725 20.132C40.3024 20.132 39.5314 19.1224 39.5314 17.6187V8.42596H35.7316V17.4909C35.7316 21.0777 37.8786 23.1821 42.1768 23.1821C46.475 23.1821 48.5793 21.0351 48.5793 17.4909V8.42596H44.7796V17.5548H44.771Z"/><path fill="white" d="M57.4015 11.5826C55.8765 11.5826 54.8243 12.2258 54.0064 13.41H53.9425V11.9063H50.5687V22.9052H54.0703V16.8264C54.0703 15.4718 54.8456 14.5048 56.0043 14.5048C57.1629 14.5048 57.721 15.3014 57.721 16.4601V22.9052H61.2226V15.7529C61.2226 13.3035 59.8041 11.5868 57.3972 11.5868L57.4015 11.5826Z"/><path fill="white" d="M66.5303 7.54419H63.0287V10.3813H66.5303V7.54419Z"/><path fill="white" d="M66.5303 11.9063H63.0287V22.9052H66.5303V11.9063Z"/><path fill="white" d="M72.6943 8.42596H69.278V11.9063H67.8168V14.7433H69.278V20.0042C69.278 22.3685 70.7391 23.033 72.7795 23.033C73.7252 23.033 74.3898 22.9478 74.6922 22.8626V20.3067C74.5644 20.3067 74.2194 20.328 73.9169 20.328C73.1672 20.328 72.6943 20.115 72.6943 19.2545V14.7476H74.6922V11.9105H72.6943V8.43022V8.42596Z"/><path fill="white" d="M82.147 16.5879C81.8019 17.6614 81.5037 19.1225 81.5037 19.1225H81.4611C81.4611 19.1225 81.1161 17.6614 80.7753 16.5879L79.2929 11.9063H75.5996L78.8413 20.3706C79.2929 21.5293 79.5059 22.1768 79.5059 22.6454C79.5059 23.3951 79.0969 23.8041 78.066 23.8041H76.8648V26.5304H79.1395C81.3504 26.5304 82.4026 25.6273 83.2843 23.0501L87.0841 11.902H83.5825L82.1427 16.5836L82.147 16.5879Z"/></svg></div>
+    <h1 id="wTitle">Welcome to Unity!</h1>
+    <div class="w-list">
+      <div class="w-card spark" style="--i:0">
+        <span class="w-ico" style="--c:#ff6aa2"><svg viewBox="0 0 24 24"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z" fill="currentColor"/></svg></span>
+        <div class="w-copy"><h2>Bring your game idea to life <em>New</em></h2><p>Meet Unity Spark. Describe the game in your head, play it in minutes, then polish it and share it with anyone. It runs on Unity with artist-made assets, so even your first draft looks the part.</p></div>
+        <a class="w-btn blue" href="https://unity.com/spark" target="_blank" rel="noopener">Try Unity Spark</a>
+      </div>
+      <div class="w-card" style="--i:1">
+        <span class="w-ico" style="--c:#b39bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span>
+        <div class="w-copy"><h2>Build with your AI agent</h2><p>Already working in Claude Code, Codex or Cursor? Learn how Unity's MCP server, CLI and agent plugin let your agent open, edit and test real Unity projects.</p></div>
+        <a class="w-btn" href="https://unity.com/features/ai" target="_blank" rel="noopener">Explore AI tools</a>
+      </div>
+      <div class="w-card" style="--i:2">
+        <span class="w-ico" style="--c:#a46bff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+        <div class="w-copy"><h2>Start building with Unity</h2><p>Everything your team needs to build, launch and scale. Unity 6 is the best version of Unity yet.</p></div>
+        <a class="w-btn" href="https://unity.com/download" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download Unity</a>
+      </div>
+      <div class="w-card" style="--i:3">
+        <span class="w-ico" style="--c:#3f8cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 12l7-7M16 5h3v3"/></svg></span>
+        <div class="w-copy"><h2>Acquire high value users at scale</h2><p>Grow a high-quality user base, reach global audiences, and optimize your campaigns powered by Vector.</p></div>
+        <a class="w-btn" href="https://unity.com/products/unity-ads" target="_blank" rel="noopener">Advertise with Unity</a>
+      </div>
+      <div class="w-card" style="--i:4">
+        <span class="w-ico" style="--c:#2fd27c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.5 0-2.6.8-2.6 2 0 2.8 5.3 1.3 5.3 4 0 1.2-1.2 2-2.7 2-1.2 0-2.2-.5-2.7-1.4M12 6.5v11"/></svg></span>
+        <div class="w-copy"><h2>Maximize your revenue</h2><p>Earn revenue and optimize monetization operations with 25+ leading ad networks.</p></div>
+        <a class="w-btn" href="https://unity.com/products/levelplay" target="_blank" rel="noopener">Monetize with Unity</a>
+      </div>
+    </div>
+    <a class="w-dash" href="https://cloud.unity.com/" target="_blank" rel="noopener">Continue to Unity dashboard</a>
+  </div>
+  <div class="w-foot">
+    <nav><a href="https://unity.com/legal" target="_blank" rel="noopener">Legal</a><a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a><a href="https://unity.com/legal/cookie-policy" target="_blank" rel="noopener">Cookies</a><a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Your Privacy Choices</a><a href="https://unity.com/legal/do-not-sell-my-personal-information" target="_blank" rel="noopener">Do Not Sell or Share My Personal Information</a></nav>
+    <label class="w-lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><select id="wLang" aria-label="Language"><option>English</option><option>日本語</option><option>Français</option><option>Deutsch</option><option>Español</option><option>Português</option><option>한국어</option><option>中文</option></select></label>
+  </div>
+</div>
+
+<!-- Discover Unity drawer -->
 <div class="eco-scrim" id="ecoScrim"></div>
-<aside class="eco" id="eco" aria-label="Unity ecosystem" aria-hidden="true">
+<aside class="eco" id="eco" aria-label="Discover Unity" aria-hidden="true">
   <div class="eco-glow" id="ecoGlow"></div>
   <div class="eco-head">
-    <div><h2>Beyond <span>unity.com</span></h2><p>Fourteen places to learn, build, play and get help.</p></div>
+    <div><h2>Discover <span>Unity</span></h2><p>Every Unity site in one place: build, learn, play and get help.</p></div>
     <button id="ecoClose" aria-label="Close"><svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#eee" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
   <div class="eco-body" id="ecoBody"></div>
-  <div class="eco-foot">Not sure where to look? <button id="ecoAsk">Ask Unity</button> searches all of these at once.</div>
+  <div class="eco-foot">Looking for something else? <button id="ecoAsk">Ask Unity</button> searches every site at once.</div>
 </aside>
 
 <main>
@@ -1203,6 +1332,16 @@ body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;a
   </section>
 
   <!-- ============ Made with Unity feed ============ -->
+  <section class="section" id="suite-home">
+    <div class="wrap">
+      <div class="m-suite home-suite" id="homeSuite">
+        <div class="m-suite-h"><div><h6 class="m-k">Where you fit in the Unity suite</h6><h3>Every kind of creator has a place to start.</h3></div><p>Five kinds of creators, one connected set of tools. Watch each one light up the products built for them, or pick yours.</p></div>
+        <div id="homeSuiteMap"></div>
+        <div class="hs-foot" id="hsFoot"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="made">
     <div class="wrap">
       <div class="sec-head">
@@ -1346,11 +1485,11 @@ const NAV = [
 ];
 
 const SITES = [
-  { id:'learn',  group:'Build and learn', name:'Unity Learn',  domain:'learn.unity.com',      url:'https://learn.unity.com/',            desc:'Free pathways, tutorials and courses', color:'#14b86b', ab:'Le' },
   { id:'assets', group:'Build and learn', name:'Asset Store',  domain:'assetstore.unity.com', url:'https://assetstore.unity.com/',        desc:'Assets, tools and templates',          color:'#306bc0', ab:'AS' },
   { id:'docs', glow:'#9fb3d9',   group:'Build and learn', name:'Documentation',domain:'docs.unity.com',       url:'https://docs.unity.com',               desc:'Manuals and API reference',            color:'#5b6577', ab:'Do' },
   { id:'spark',  group:'Build and learn', name:'Unity Spark',  domain:'unity.com/spark',      url:'https://unity.com/spark',              desc:'Prompt a playable prototype (beta)',   color:'#e0559a', ab:'Sp' },
   { id:'cloud',  group:'Build and learn', name:'Unity Cloud',  domain:'cloud.unity.com',      url:'https://cloud.unity.com',              desc:'DevOps, multiplayer and Grow dashboard',color:'#6b5bff', ab:'Cl' },
+  { id:'learn',  group:'Build and learn', name:'Unity Learn',  domain:'learn.unity.com',      url:'https://learn.unity.com/',            desc:'Free pathways, tutorials and courses', color:'#14b86b', ab:'Le' },
   { id:'discussions', group:'Community',  name:'Discussions',  domain:'discussions.unity.com',url:'https://discussions.unity.com/',       desc:'Ask, answer and connect',              color:'#e8682f', ab:'Di' },
   { id:'play',   group:'Community',       name:'Unity Play',   domain:'play.unity.com',       url:'https://play.unity.com/en',            desc:'Play and share browser games and jams',color:'#d63c44', ab:'Pl' },
   { id:'github', glow:'#a0a0ff', group:'Community',       name:'GitHub',       domain:'github.com/Unity-Technologies', url:'https://github.com/Unity-Technologies', desc:'Open-source repos and the agent plugin', color:'#3a3a44', ab:'GH' },
@@ -1765,6 +1904,10 @@ function openGroup(id){
       </div>
       <div><h6 class="m-k">With Unity you can</h6><ul class="checks">${J.checks.map(c=>`<li>${c}</li>`).join('')}</ul></div>
     </div>
+    <section class="m-suite">
+      <div class="m-suite-h"><div><h6 class="m-k">Where you fit in the Unity suite</h6><h3>Every kind of creator has a place to start</h3></div><p>Five groups of people, one connected set of tools. Your group and the products built for you are highlighted.</p></div>
+      ${suiteMap(id)}
+    </section>
     <div class="m-visuals">
       <div class="m-visual">${visual(g)}</div>
       <div class="m-stat"><div class="big">${J.stat.big}</div><p>${J.stat.text}</p><small>${J.stat.src}</small></div>
@@ -1774,10 +1917,6 @@ function openGroup(id){
         <ol>${J.products.map((k,n)=>`<li class="${k===J.start?'is-start':''}"><i style="background:${SUITE[k].color}"></i><div><b>${SUITE[k].name}</b><small>${SUITE[k].line}</small></div>${k===J.start?'<em>Start here</em>':`<span>Step ${n+1}</span>`}</li>`).join('')}</ol>
       </div>
     </div>
-    <section class="m-suite">
-      <div class="m-suite-h"><div><h6 class="m-k">Where you fit in the Unity suite</h6><h3>Every kind of creator has a place to start</h3></div><p>Five groups of people, one connected set of tools. Your group and the products built for you are highlighted.</p></div>
-      ${suiteMap(id)}
-    </section>
     <h3 class="m-h">Meet the explorers in this group</h3>
     <p class="m-sub">Find yourself below and see which product to open first.</p>
     <div class="people">${J.people.map(p=>`
@@ -2601,6 +2740,32 @@ addEventListener('keydown', e => {
 
 
 $('homeLogo').addEventListener('click', e => { e.preventDefault(); if (document.body.classList.contains('chat-open')) closeChat(); if ($('overlay').classList.contains('open')) closeModal(); if (document.body.classList.contains('eco-open')) setEco(false); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+/* Get started: full-screen welcome */
+const openWelcome = () => { document.body.classList.add('welcome-open'); $('welcome').setAttribute('aria-hidden','false'); $('welcome').scrollTop = 0; $('wClose').focus({preventScroll:true}); };
+const closeWelcome = () => { document.body.classList.remove('welcome-open'); $('welcome').setAttribute('aria-hidden','true'); };
+$('getStarted').addEventListener('click', openWelcome);
+$('wClose').addEventListener('click', closeWelcome);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('welcome-open')) { e.stopImmediatePropagation(); closeWelcome(); } }, true);
+
+/* Suite graphic on the homepage: steps through each persona, or pick one */
+(() => {
+  const host = $('homeSuiteMap'), box = $('homeSuite'); if (!host) return;
+  let cur = 0, timer = null, hover = false, started = false;
+  const show = i => {
+    cur = i; const id = GROUPS[i].id, J = JOURNEY[id];
+    host.innerHTML = suiteMap(id).replace(/<div class="suite-node person-node ([^"]*)" data-p="([^"]+)">/g, (m, c, p) => `<button type="button" class="suite-node person-node ${c}" data-p="${p}" style="--pc:${GROUPS.find(g => g.id === p).color}">`).replace(/(<button type="button" class="suite-node person-node[^>]*>.*?)<\/div>/g, '$1<span class="hs-prog"><s></s></span></button>');
+    $('hsFoot').innerHTML = `<b>${J.short}</b> usually start with <a class="pchip" href="${SUITE[J.start].u}" target="_blank" rel="noopener"><i style="background:${SUITE[J.start].color}"></i>${SUITE[J.start].name}</a> then add ${J.products.filter(k => k !== J.start).map(k => SUITE[k].name).join(', ')}.`;
+    requestAnimationFrame(() => drawSuite(box));
+    clearTimeout(timer); timer = setTimeout(tick, 4500);
+  };
+  const tick = () => { if (hover) { timer = setTimeout(tick, 1000); return; } show((cur + 1) % GROUPS.length); };
+  host.addEventListener('click', e => { const b = e.target.closest('.person-node'); if (b) show(GROUPS.findIndex(g => g.id === b.dataset.p)); });
+  box.addEventListener('mouseenter', () => { hover = true; box.classList.add('paused'); });
+  box.addEventListener('mouseleave', () => { hover = false; box.classList.remove('paused'); });
+  addEventListener('resize', () => drawSuite(box));
+  show(0);
+})();
 </script>
 </body>
 </html>
