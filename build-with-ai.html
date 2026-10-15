@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build with AI · Unity</title>
+<!--
+  Concept landing page for the header's "Build with AI" link.
+  Purpose: send people to one of two places: agent-setup.html (connect your AI agent) or unity.com/spark.
+  Images are illustrated stand-ins embedded in the page. Unity commands shown are placeholders (see agent-setup.html).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:nohemi;src:url(https://unity.com/_next/static/media/Nohemi_Medium-s.p.0jvhrdoe3l7zp.woff2) format('woff2');font-weight:500;font-display:swap}
+:root{color-scheme:dark;--bg:#000;--bg2:#0d0d0f;--card:#141416;--card2:#1c1c1f;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--ink:#fff;--ink2:#c9c9cf;--ink3:#8f8f98;--blue:#3358d4;--blue2:#4a6ce0;--accent2:#9b8cff;--agent:#5ec4ff;--spark:#ff6aa2;--head:nohemi,Inter,system-ui,sans-serif;--font:Inter,system-ui,-apple-system,Segoe UI,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--bevel:inset 0 1px 0 0 rgba(255,255,255,.19);--accent:#7d6bff;--accent-soft:rgba(125,107,255,.14);--btn:#3a5bc7;--g-sunset:linear-gradient(115deg,#ffb36b 0%,#ff6aa2 38%,#a46bff 70%,#6f7bff 100%);--shadow:0 40px 80px -30px rgba(0,0,0,.85),0 20px 40px -20px rgba(0,0,0,.6)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,64px)}
+/* hero band (same gradient as the homepage banner; follows the mouse) */
+.band{position:relative;overflow:hidden;isolation:isolate;margin-top:-56px;padding:150px 0 110px;border-bottom:1px solid rgba(255,255,255,.12);text-align:center;--mx:.5;--my:.5}
+.band-bg{position:absolute;inset:-25%;filter:blur(64px);opacity:.62;pointer-events:none;z-index:-2}
+.band-bg span{position:absolute;border-radius:50%}
+.band-bg span:nth-child(1){width:46vw;height:46vw;left:6%;top:16%;background:#2f8fff;opacity:.35}
+.band-bg span:nth-child(2){width:40vw;height:40vw;right:8%;top:6%;background:#ff5fa2;opacity:.42}
+.band-bg span:nth-child(3){width:36vw;height:36vw;left:36%;bottom:-2%;background:#7b5cff;opacity:.45}
+.band-spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at calc(var(--mx) * 100%) calc(var(--my) * 100%),rgba(255,140,190,.22),rgba(123,92,255,.12) 40%,transparent 70%)}
+.band-grid{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at calc(var(--mx) * 100%) calc(var(--my) * 100%),#000 10%,transparent 62%);mask-image:radial-gradient(ellipse at calc(var(--mx) * 100%) calc(var(--my) * 100%),#000 10%,transparent 62%)}
+.eyebrow{font:600 13px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:#c9c0ff}
+h1{margin-top:18px;font:500 clamp(40px,5.4vw,78px)/1.02 var(--head);letter-spacing:-.02em}
+.lead{margin:22px auto 0;max-width:660px;font:400 19px/1.55 var(--font);color:#e1e1e8}
+.ctas{margin-top:34px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.ubtn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font:600 12.5px/1 var(--font);letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;transition:background .2s}
+.ubtn svg{width:14px;height:14px}
+.ubtn.fill{background:var(--blue);box-shadow:var(--bevel)}.ubtn.fill:hover{background:var(--blue2)}
+.ubtn.line{border:1.5px solid rgba(255,255,255,.55)}.ubtn.line:hover{background:rgba(255,255,255,.1)}
+
+/* the two paths */
+.paths{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.path{position:relative;display:flex;flex-direction:column;border-radius:20px;border:1px solid var(--line);background:radial-gradient(100% 80% at 100% 0%,color-mix(in srgb,var(--c) 14%,transparent),transparent 60%),var(--bg2);overflow:hidden;transition:border-color .3s,transform .3s}
+.path:hover{border-color:color-mix(in srgb,var(--c) 55%,transparent);transform:translateY(-3px)}
+.path-body{padding:36px 36px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.path h2{margin-top:14px;font:500 clamp(30px,3vw,42px)/1.08 var(--head)}
+.path p{margin-top:12px;font:400 16.5px/1.55 var(--font);color:var(--ink2);max-width:520px}
+.path ul{margin-top:18px;list-style:none;display:grid;gap:8px}
+.path li{display:flex;gap:10px;font:500 15px/1.4 var(--font);color:#e8e8ec}
+.path li::before{content:'';flex:none;width:17px;height:17px;margin-top:1px;border-radius:50%;background:color-mix(in srgb,var(--c) 28%,transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat}
+.path .go{margin-top:26px}
+.vis{position:relative;margin:30px 36px 36px;border-radius:14px;overflow:hidden;border:1px solid var(--line2);min-height:250px;flex:1}
+/* agent visual */
+.term{background:#08080a;font:400 13px/1.8 var(--mono);color:#e6e6ea}
+.term-bar{display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;background:#141417;border-bottom:1px solid var(--line)}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#2c2c33}
+.term-bar span{margin-left:8px;font:500 12px/1 var(--mono);color:var(--ink3)}
+.term pre{padding:16px 18px;white-space:pre-wrap;font:inherit}
+.term .p{color:var(--agent)}.term .c{color:#6b6b76}.term .ok{color:#38c983}
+.term .ln{opacity:0;animation:ln .4s forwards}
+@keyframes ln{to{opacity:1}}
+.models{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.model{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px 0 5px;border-radius:999px;border:1px solid var(--line2);background:var(--card);font:600 13px/1 var(--font);transition:border-color .2s}
+.model:hover{border-color:var(--mc)}
+.model b{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--mono);background:color-mix(in srgb,var(--mc) 30%,#1b1b1b);border:1px solid color-mix(in srgb,var(--mc) 55%,transparent)}
+/* spark visual */
+.spark-vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.spark-vis::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.55))}
+.bubble{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:12px 12px 12px 16px;border-radius:14px;background:rgba(18,18,22,.86);backdrop-filter:blur(10px);border:1px solid var(--line2);font:400 14.5px/1.4 var(--font)}
+.bubble .typed{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bubble .typed::after{content:'';display:inline-block;width:2px;height:1em;background:#fff;vertical-align:-.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.bubble button{flex:none;height:34px;padding:0 14px;border-radius:999px;background:var(--spark);color:#111;font:700 13px/1 var(--font)}
+.play{position:absolute;z-index:2;top:16px;left:16px;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);font:600 12px/1 var(--font)}
+.play i{width:7px;height:7px;border-radius:50%;background:#38c983;box-shadow:0 0 8px #38c983}
+
+/* which one */
+.which{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.w{padding:26px;border-radius:16px;border:1px solid var(--line);background:var(--bg2)}
+.w small{font:600 12px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.w h3{margin-top:12px;font:600 19px/1.3 var(--font)}
+.w a{display:inline-flex;margin-top:14px;font:600 14px/1 var(--font);color:#aebcff}
+.w a:hover{text-decoration:underline}
+.foot{margin-top:96px;border-top:1px solid var(--line);padding:28px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:400 13px/1.5 var(--font);color:var(--ink3)}
+.foot a:hover{color:#fff}
+@media (max-width:900px){.paths,.which{grid-template-columns:1fr}.path-body{padding:28px 24px 0}.vis{margin:24px}}
+@media (max-width:640px){.band{padding-top:90px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.pill{height:36px;padding:0 18px;border-radius:999px;display:inline-flex;align-items:center;font:600 13px/1 var(--font);white-space:nowrap}
+.pill.dark{background:#262626;box-shadow:inset 0 1px 0 0 #424242}.pill.dark:hover{background:#303030}
+.pill.blue{background:var(--blue);box-shadow:var(--bevel)}.pill.blue:hover{background:var(--blue2)}
+/* ---------- Header ---------- */
+.nav{position:sticky;top:0;z-index:60;height:56px;background:transparent;transition:background .3s,backdrop-filter .3s;display:flex;align-items:center;padding:0 16px;gap:6px}
+.brandbox{display:flex;align-items:center;gap:2px;margin-right:22px}
+.logo{display:flex;align-items:center;height:56px;padding:0 6px}
+.logo svg{width:24px;height:auto}
+.chev{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.chev:hover,.chev[aria-expanded="true"]{background:#1f1f22}
+.chev svg{width:14px;height:14px;transition:transform .3s}
+.chev[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-links{display:flex;align-items:center;gap:2px;height:100%}
+.ni{height:100%;display:flex;align-items:center}
+.ni>a{height:32px;padding:0 10px;border-radius:6px;display:flex;align-items:center;font:500 14px/1 var(--font);color:#fff;white-space:nowrap}
+.ni:hover>a,.ni.open>a{background:#1f1f22}
+.ni>a.new::after{content:'New';margin-left:6px;font:600 10px/1 var(--font);padding:3px 6px;border-radius:999px;background:var(--accent);color:#fff}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.ico-btn{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.ico-btn:hover{background:#1f1f22}
+.ico-btn svg{width:17px;height:17px}
+.mega{position:absolute;left:0;right:0;top:56px;background:rgba(10,10,11,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:30px 60px 34px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 40px;box-shadow:var(--shadow)}
+.ni.open .mega{display:grid}
+.mcol h6{font:500 13px/1 var(--font);color:var(--ink3);margin-bottom:16px}
+.mlink{display:flex;gap:14px;align-items:flex-start;padding:8px;border-radius:10px;margin:0 -8px 6px}
+.mlink:hover{background:#1a1a1d}
+.mlink .mi{flex:none;width:38px;height:38px;border-radius:9px;background:#1f1f22;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.mlink .mi svg{width:18px;height:18px}
+.mlink b{display:block;font:500 14px/1.3 var(--font)}
+.mlink span{display:block;font:400 13px/1.4 var(--font);color:var(--ink3);margin-top:2px}
+.mbtns{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:12px}
+.mbtn{height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);display:inline-flex;align-items:center;gap:6px;font:500 12px/1 var(--font)}
+.mbtn:hover{background:#1f1f22}
+
+/* ---------- Discover Unity drawer ---------- */
+.eco-scrim{position:fixed;inset:0;z-index:125;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s}
+.eco{position:fixed;z-index:130;top:0;left:0;bottom:0;width:min(600px,100vw);background:#060608;border-right:1px solid var(--line2);transform:translateX(-102%);transition:transform .34s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
+body.eco-open .eco{transform:none}
+body.eco-open .eco-scrim{opacity:1;pointer-events:auto}
+.eco-glow{position:absolute;width:520px;height:520px;border-radius:50%;left:-120px;top:var(--gy,20%);background:radial-gradient(circle,var(--glow,#7d6bff) 0%,transparent 62%);opacity:.3;filter:blur(30px);transition:background .4s,top .5s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.eco-head{position:relative;display:flex;gap:10px;align-items:flex-start;padding:28px 32px 6px}
+.eco-head h2{font:500 40px/1.02 var(--head);letter-spacing:-.02em}
+.eco-head h2 span{background:var(--g-sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eco-head p{margin-top:10px;font:400 15px/1.45 var(--font);color:var(--ink2)}
+.eco-head button{margin-left:auto;flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center}
+.eco-head button:hover{background:#1f1f22}
+.eco-body{position:relative;overflow-y:auto;padding:6px 20px 28px;scrollbar-width:thin;scrollbar-color:#2a2a30 transparent}
+.eco-group{padding:24px 12px 8px;font:500 11px/1 var(--mono);letter-spacing:.14em;color:#6b6b76}
+.eco-link{position:relative;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;overflow:hidden;opacity:0;transform:translateX(-14px)}
+body.eco-open .eco-link{animation:ecoIn .45s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 28ms + 80ms)}
+@keyframes ecoIn{to{opacity:1;transform:none}}
+.eco-link::before{content:'';position:absolute;left:0;top:14%;bottom:14%;width:3px;border-radius:2px;background:var(--c);transform:scaleY(0);transition:transform .25s}
+.eco-link::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--c),transparent 75%);opacity:0;transition:opacity .3s;z-index:-1}
+.eco-link:hover::before{transform:scaleY(1)}
+.eco-link:hover::after{opacity:.22}
+.eco-link .num{font:500 12px/1 var(--mono);color:#55555f}
+.eco-link:hover .num{color:var(--c)}
+.eco-link b{display:block;font:500 26px/1.1 var(--head);letter-spacing:-.01em;color:#d8d8de;transition:color .25s}
+.eco-link:hover b{color:#fff;text-shadow:0 0 24px var(--c)}
+.eco-link .d{display:block;font:400 13px/1.4 var(--font);color:#6b6b76;margin-top:4px}
+.eco-link:hover .d{color:#d0d0d8}
+.eco-link .dom{font:500 11px/1 var(--mono);color:#fff;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.eco-link:hover .dom{opacity:1;transform:none}
+.eco-foot{position:relative;margin-top:auto;border-top:1px solid var(--line);padding:16px 32px;font:400 13px/1.5 var(--font);color:var(--ink3)}
+.eco-foot a{color:var(--accent2);font-weight:600}
+
+.nav.scrolled{background:rgba(10,8,18,.55);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4)}
+@media (max-width:1180px){.nav-links .ni:nth-child(n+7){display:none}.mega{padding:26px 28px}}
+@media (max-width:1000px){.nav-links{display:none}.nav{background:#000!important;backdrop-filter:none!important}.band{margin-top:0!important}}
+@media (max-width:640px){.eco-head h2{font-size:30px}.eco-link b{font-size:21px}.eco-link .dom{display:none}}
+
+.ni>a[aria-current="page"]{background:#1f1f22}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* ---------- Get started: full-screen welcome overlay ---------- */
+.gs{position:fixed;inset:0;z-index:200;background:#1a1a1a;overflow-y:auto;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
+.gs.open{opacity:1;pointer-events:auto}
+.gs-x{position:fixed;top:20px;right:20px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid #3a3a3a;background:#232323;display:flex;align-items:center;justify-content:center}
+.gs-x:hover{background:#2e2e2e}
+.gs-x svg{width:18px;height:18px}
+.gs-main{flex:1;width:100%;max-width:960px;margin:0 auto;padding:96px 20px 48px;display:flex;flex-direction:column;align-items:center}
+.gs-logo svg{width:44px;height:auto}
+.gs h2{margin-top:24px;font:600 clamp(30px,3.6vw,44px)/1.15 var(--font);letter-spacing:-.02em;text-align:center}
+.gs-list{margin-top:44px;width:100%;display:grid;gap:20px}
+.gs-card{display:grid;grid-template-columns:44px 1fr 280px;gap:20px;align-items:center;padding:30px 24px;border-radius:12px;background:#222;border:1px solid #333;transform:translateY(10px);opacity:0}
+.gs.open .gs-card{animation:gsin .45s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 60ms + 80ms)}
+@keyframes gsin{to{opacity:1;transform:none}}
+.gs-card.feature{border-color:rgba(255,106,162,.35);background:radial-gradient(120% 160% at 0% 0%,rgba(255,106,162,.12),transparent 50%),radial-gradient(120% 160% at 100% 100%,rgba(123,92,255,.14),transparent 55%),#222}
+.gs-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.gs-ico svg{width:20px;height:20px}
+.gs-card h3{font:600 22px/1.25 var(--font);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gs-card h3 .tag{font:600 11px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:999px;background:var(--g-sunset);color:#111}
+.gs-card p{margin-top:8px;font:400 16.5px/1.5 var(--font);color:#b4b4bb}
+.gs-btn{height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--font);white-space:nowrap;border:1px solid #444;color:#fff;transition:background .2s,border-color .2s}
+.gs-btn:hover{background:#2c2c2c;border-color:#5a5a5a}
+.gs-btn.blue{background:#1173d4;border-color:#1173d4}
+.gs-btn.blue:hover{background:#2a86e4;border-color:#2a86e4}
+.gs-btn svg{width:18px;height:18px}
+.gs-cont{margin-top:30px;font:500 17px/1 var(--font);color:#5aa7ff}
+.gs-cont:hover{text-decoration:underline}
+.gs-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 40px 28px;font:400 15px/1.4 var(--font);color:#b4b4bb}
+.gs-foot nav{display:flex;flex-wrap:wrap;gap:8px 26px}
+.gs-foot a:hover{color:#fff}
+.gs-lang{height:44px;padding:0 40px 0 44px;border-radius:8px;border:1px solid #3a3a3a;appearance:none;color:#fff;font:500 15px/1 var(--font);background:#232323 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18'/%3E%3C/svg%3E") 12px center/20px no-repeat}
+.gs-langw{position:relative}
+.gs-langw::after{content:'';position:absolute;right:14px;top:50%;width:8px;height:8px;border-right:1.6px solid #aaa;border-bottom:1.6px solid #aaa;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+@media (max-width:760px){
+  .gs-card{grid-template-columns:44px 1fr;padding:22px 18px}
+  .gs-card .gs-btn{grid-column:1/-1}
+  .gs-foot{padding:20px}
+}
+
+.gs-card.agent{border-color:rgba(94,196,255,.32);background:radial-gradient(120% 160% at 0% 0%,rgba(63,184,255,.12),transparent 50%),#222}
+.gs-card.agent,.gs-card.more{grid-template-columns:44px 1fr}
+.gs-card.agent{row-gap:0}
+.gs-card.agent>.gs-drawer,.gs-card.more>.gs-drawer{grid-column:1/-1}
+.gs-exp{margin-top:18px;height:46px;padding:0 20px;border-radius:999px;border:1px solid #444;display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--font);color:#fff;transition:background .2s,border-color .2s}
+.gs-exp:hover{background:#2c2c2c;border-color:#5a5a5a}
+.gs-exp svg,.gs-more svg{width:18px;height:18px;transition:transform .3s}
+.gs-exp[aria-expanded="true"] svg,.gs-more[aria-expanded="true"] svg{transform:rotate(180deg)}
+.gs-drawer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1)}
+.gs-drawer.open{grid-template-rows:1fr}
+.gs-drawer-in{overflow:hidden;min-height:0}
+.gs-tools{margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gs-tool{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border-radius:10px;background:#1b1b1b;border:1px solid #333;transition:border-color .2s,background .2s}
+.gs-tool:hover{border-color:var(--tc);background:#262626}
+.gs-tl{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 12px/1 var(--mono);color:#fff;background:color-mix(in srgb,var(--tc) 30%,#1b1b1b);border:1px solid color-mix(in srgb,var(--tc) 50%,transparent)}
+.gs-tt b{display:block;font:600 15px/1.25 var(--font)}
+.gs-tt small{display:block;margin-top:2px;font:500 12px/1.3 var(--font);color:#8f8f98}
+.gs-tt em{display:block;margin-top:6px;font:400 13.5px/1.45 var(--font);font-style:normal;color:#b4b4bb}
+.gs-go{font:600 13px/1 var(--font);color:#5aa7ff;white-space:nowrap}
+.gs-all{display:inline-block;margin-top:14px;font:600 14px/1 var(--font);color:#5aa7ff}
+.gs-all:hover,.gs-go:hover{text-decoration:underline}
+.gs-card.more{padding:0;gap:0;display:block}
+.gs-more{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;text-align:left}
+.gs-more b{display:block;font:600 18px/1.25 var(--font)}
+.gs-more small{display:block;margin-top:4px;font:400 14.5px/1.4 var(--font);color:#b4b4bb}
+.gs-sub{display:grid;gap:10px;padding:0 14px 14px}
+.gs-sub .gs-card{opacity:1;transform:none;animation:none!important;background:#1b1b1b;padding:20px}
+.gs-sub .gs-card h3{font-size:18px}
+.gs-sub .gs-card p{font-size:14.5px}
+.gs-sub .gs-btn{height:44px;font-size:14.5px}
+@media (max-width:760px){.gs-tools{grid-template-columns:1fr}.gs-tool{grid-template-columns:40px 1fr}.gs-go{display:none}}
+
+.gs-ags{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gs-ag{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;border:1px solid #333;background:#1b1b1b;text-align:left;transition:border-color .2s,background .2s,box-shadow .2s}
+.gs-ag:hover{border-color:#555}
+.gs-ag.on{border-color:var(--tc);background:color-mix(in srgb,var(--tc) 10%,#1b1b1b);box-shadow:0 0 0 3px color-mix(in srgb,var(--tc) 18%,transparent)}
+.gs-ag b{display:block;font:600 15px/1.2 var(--font)}
+.gs-ag small{display:block;margin-top:2px;font:500 12px/1.2 var(--font);color:#8f8f98}
+.gs-go-term{margin-top:18px}
+.gs-btn.white{background:#fff;color:#111;border-color:#fff}.gs-btn.white:hover{background:#e6e6ea;border-color:#e6e6ea}.gs-btn.white svg{stroke:#111}
+.gs-main[hidden]{display:none}
+.gs-acct{max-width:560px;position:relative}
+.gs-back{position:absolute;left:20px;top:40px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 8px;border-radius:999px;border:1px solid #3a3a3a;font:500 14px/1 var(--font);color:#ddd}
+.gs-back:hover{background:#2a2a2a}
+.gs-back svg{width:16px;height:16px}
+.gs-opt{display:inline-block;vertical-align:middle;margin-left:8px;font:600 12px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;background:#2c2c2c;color:#b4b4bb}
+.gs-lead{margin-top:16px;text-align:center;font:400 17px/1.55 var(--font);color:#b4b4bb}
+.gs-acct-card{margin-top:32px;width:100%;padding:28px;border-radius:12px;background:#222;border:1px solid #333;display:grid;gap:12px}
+.gs-for{font:400 14px/1.4 var(--font);color:#8f8f98;margin-bottom:4px}
+.gs-for b{color:#fff}
+.gs-wide{width:100%}
+.gs-or{display:flex;align-items:center;gap:12px;color:#777;font:500 13px/1 var(--font)}
+.gs-or::before,.gs-or::after{content:'';flex:1;height:1px;background:#333}
+.gs-skip{font:600 15px/1.4 var(--font);color:#5aa7ff;padding:8px}
+.gs-skip:hover{text-decoration:underline}
+.gs-fine{margin-top:16px;font:400 12.5px/1.5 var(--font);color:#777;text-align:center}
+@media (max-width:760px){.gs-ags{grid-template-columns:1fr 1fr}.gs-back{top:16px}}
+
+.gs-card.agent{display:block;padding:0}
+.gs-agh{width:100%;display:grid;grid-template-columns:44px 1fr 28px;gap:20px;align-items:center;padding:30px 24px;text-align:left}
+.gs-agh .h3{display:block;font:600 22px/1.25 var(--font);letter-spacing:-.01em}
+.gs-agh .p{display:block;margin-top:8px;font:400 16.5px/1.5 var(--font);color:#b4b4bb}
+.gs-agh .chev{width:26px;height:26px;color:#ddd;transition:transform .3s}
+.gs-agh[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.gs-agx{display:grid;grid-template-columns:1fr 1fr;margin:0 24px 28px 88px;padding-top:24px;border-top:1px solid #333}
+.gs-agcol{display:flex;flex-direction:column;gap:12px}
+.gs-agcol:first-child{padding-right:28px;border-right:1px solid #3a3a3a}
+.gs-agcol:last-child{padding-left:28px}
+.gs-agcol h4{font:600 18px/1.3 var(--font)}
+.gs-cpys{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gs-cpy{display:flex;align-items:center;gap:8px;height:48px;padding:0 12px 0 7px;border-radius:999px;border:1px solid #444;background:#1b1b1b;color:#fff;white-space:nowrap;min-width:0;font:600 14px/1 var(--font);transition:border-color .2s,background .2s}
+.gs-cpy .gs-tl{flex:none;width:32px;height:32px;border-radius:50%;font-size:10.5px}
+.gs-cpy .lbl{flex:1;text-align:left}
+.gs-cpy .cp{width:16px;height:16px;color:#8f8f98}
+.gs-cpy:hover{border-color:var(--tc);background:#262626}
+.gs-cpy.done{border-color:#38c983}
+.gs-cpy.done .cp{color:#38c983}
+.gs-hint{font:400 14px/1.5 var(--font);color:#8f8f98}
+.gs-hint a{color:#5aa7ff;font-weight:600}
+.gs-hint a:hover{text-decoration:underline}
+.gs-toast{position:fixed;left:50%;bottom:28px;z-index:5;transform:translate(-50%,16px);opacity:0;padding:11px 16px;border-radius:999px;background:#fff;color:#111;font:600 14px/1 var(--font);transition:all .25s;pointer-events:none}
+.gs-toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.gs-agx{grid-template-columns:1fr;margin:0 18px 22px}.gs-agcol:first-child{padding:0 0 22px;border-right:0;border-bottom:1px solid #3a3a3a}.gs-agcol:last-child{padding:22px 0 0}.gs-agh{grid-template-columns:44px 1fr 24px;padding:22px 18px}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="brandbox">
+    <button class="chev" id="ecoBtn" aria-expanded="false" aria-controls="eco" aria-label="Discover other Unity sites">
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <a class="logo" href="index2.html" aria-label="Unity home"><svg viewBox="0 0 29 32" fill="white" aria-hidden="true"><path d="M15.4079 5.72524L20.4728 8.65176C20.656 8.75399 20.6603 9.0394 20.4728 9.14164L14.4537 12.6177C14.2705 12.7242 14.0575 12.7157 13.8871 12.6177L7.86794 9.14164C7.68477 9.0394 7.68051 8.75399 7.86794 8.65176L12.9329 5.7295V0L0 7.46326V22.3898L4.95847 19.5272V13.6784C4.95847 13.4696 5.20128 13.3206 5.38445 13.4356L11.4036 16.9116C11.5868 17.0181 11.689 17.2055 11.689 17.4015V24.3536C11.6933 24.5623 11.4505 24.7114 11.2673 24.6006L6.20234 21.6741L1.24388 24.5367L14.1725 32L27.1012 24.5367L22.1427 21.6741L17.0777 24.6006C16.8988 24.7071 16.6475 24.5708 16.6518 24.3536V17.4015C16.6518 17.1928 16.7668 17.0096 16.9372 16.9116L22.9563 13.4356C23.1352 13.3248 23.3866 13.4654 23.3823 13.6826V19.5314L28.3408 22.394V7.46326L15.4079 0V5.72524Z"/></svg></a>
+  </div>
+  <nav class="nav-links" id="navLinks" aria-label="Main"><div class="ni"><a href="https://unity.com/games" class="" aria-haspopup="true" aria-expanded="false">Games</a><div class="mega"><div class="mcol"><h6>Develop</h6><a class="mlink" href="https://unity.com/products/unity-engine"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5"/></svg></span><span><b>Unity Engine</b><span>Build 2D and 3D games for any platform</span></span></a><a class="mlink" href="https://unity.com/features/collaboration"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.4 0 4.2 1.4 5 4"/></svg></span><span><b>Collaboration</b><span>Collaborate and iterate quickly with your team</span></span></a><div class="mbtns"><a class="mbtn" href="https://unity.com/download">↓ Download Unity</a><a class="mbtn" href="https://unity.com/products">Plans and pricing</a></div></div><div class="mcol"><h6>Deploy</h6><a class="mlink" href="https://unity.com/features/multiplatform"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span><b>Multiplatform</b><span>Discover 25+ platforms Unity supports</span></span></a><a class="mlink" href="https://unity.com/features/liveops"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span><b>LiveOps</b><span>Post-launch insights and live game ops</span></span></a></div><div class="mcol"><h6>Grow</h6><a class="mlink" href="https://unity.com/solutions/user-acquisition"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span><span><b>User acquisition</b><span>Get discovered and acquire mobile users</span></span></a><a class="mlink" href="https://unity.com/products/iap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2 10h10l2-7H7"/><circle cx="10" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></span><span><b>In-App Purchase</b><span>Manage IAP across stores and D2C</span></span></a><a class="mlink" href="https://unity.com/solutions/app-monetization"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><span><b>Monetization</b><span>Connect players with the right games</span></span></a><div class="mbtns"><a class="mbtn" href="https://cloud.unity.com/acquire">Advertise with Unity</a><a class="mbtn" href="https://cloud.unity.com/home/products?query=Monetization">Monetize with Unity</a></div></div><div class="mcol"><h6>Use cases</h6><a class="mlink" href="https://unity.com/solutions/mobile"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></span><span><b>Mobile Games</b><span>Build & grow mobile hits with Unity</span></span></a><a class="mlink" href="https://unity.com/solutions/indie"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span><b>Indie Games</b><span>Ship big games with small teams</span></span></a><a class="mlink" href="https://unity.com/solutions/xr/games"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4l-3-3-3 3H5a2 2 0 0 1-2-2z"/></svg></span><span><b>XR Games</b><span>Launch XR games across platforms</span></span></a><a class="mlink" href="https://unity.com/features/multiplayer"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c1-3 3.5-4.5 6-4.5S13 17 14 20M10 20c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg></span><span><b>Multiplayer Games</b><span>Simplify multiplayer game development</span></span></a></div></div></div><div class="ni"><a href="build-with-ai.html" class="" >Build with AI</a></div><div class="ni"><a href="https://unity.com/industry" class="" aria-haspopup="true" aria-expanded="false">Industry</a><div class="mega"><div class="mcol"><h6>Use cases</h6><a class="mlink" href="https://unity.com/solutions/immersive-3d-collaboration"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.4 0 4.2 1.4 5 4"/></svg></span><span><b>3D collaboration</b><span>Build and review 3D projects in real time</span></span></a><a class="mlink" href="https://unity.com/solutions/immersive-training"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4l-3-3-3 3H5a2 2 0 0 1-2-2z"/></svg></span><span><b>Immersive training</b><span>Train in immersive environments</span></span></a><a class="mlink" href="https://unity.com/solutions/robotics"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg></span><span><b>Robotics</b><span>Deploy robotics systems faster</span></span></a><a class="mlink" href="https://unity.com/solutions/human-machine-interface-hmi"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span><b>Human Machine Interfaces (HMI)</b><span>Develop interactive 3D embedded systems</span></span></a></div><div class="mcol"><h6>Industries</h6><a class="mlink" href="https://unity.com/solutions/manufacturing"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10l6 3V9l6 3V5h6v15z"/></svg></span><span><b>Manufacturing</b><span>Achieve operational excellence</span></span></a><a class="mlink" href="https://unity.com/solutions/retail"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z M9 8a3 3 0 0 1 6 0"/></svg></span><span><b>Retail</b><span>Transform in-store experiences into online ones</span></span></a><a class="mlink" href="https://unity.com/solutions/automotive"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V12l2-5h10l2 5v4z M5 16v2 M19 16v2"/><circle cx="8" cy="13.5" r="1"/><circle cx="16" cy="13.5" r="1"/></svg></span><span><b>Automotive</b><span>Boost innovation and in-car experiences</span></span></a><div class="mbtns"><a class="mbtn" href="https://unity.com/industry/find-your-industry">See all industries</a></div></div></div></div><div class="ni"><a href="https://unity.com/resources" class="" aria-haspopup="true" aria-expanded="false">Resources</a><div class="mega"><div class="mcol"><h6>Technical library</h6><a class="mlink" href="https://docs.unity.com"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"/></svg></span><span><b>Documentation</b><span>Official user manuals and API references</span></span></a><a class="mlink" href="https://unity.com/developer-tools"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a4 4 0 0 0 5 5l-8 8a2 2 0 0 1-3-3z"/></svg></span><span><b>Developer tools</b><span>Release versions and issue tracker</span></span></a><a class="mlink" href="https://unity.com/roadmap"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14"/></svg></span><span><b>Roadmap</b><span>Review upcoming features</span></span></a><a class="mlink" href="https://unity.com/glossary"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M8 7h7"/></svg></span><span><b>Glossary</b><span>Library of technical terms</span></span></a></div><div class="mcol"><h6>Insights</h6><a class="mlink" href="https://unity.com/resources?type=case-study"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span><span><b>Case studies</b><span>Real-world success stories</span></span></a><a class="mlink" href="https://docs.unity3d.com/6000.0/Documentation/Manual/best-practice-guides.html"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M8 7h7"/></svg></span><span><b>Best practice guides</b><span>Expert tips and tricks</span></span></a><a class="mlink" href="https://unity.com/demos"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9v6l5-3z"/></svg></span><span><b>Demos</b><span>Demos, samples, and building blocks</span></span></a><div class="mbtns"><a class="mbtn" href="https://unity.com/resources">All resources</a></div></div><div class="mcol"><h6>What's new</h6><a class="mlink" href="https://unity.com/blog"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"/></svg></span><span><b>Blog</b><span>Updates, information, and technical tips</span></span></a><a class="mlink" href="https://unity.com/news"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><b>News</b><span>News, stories, and press center</span></span></a></div></div></div><div class="ni"><a href="https://unity.com/community" class="" aria-haspopup="true" aria-expanded="false">Community</a><div class="mega"><div class="mcol"><h6>Community Hub</h6><a class="mlink" href="https://discussions.unity.com/"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><b>Discussions</b><span>Discuss, problem-solve, and connect</span></span></a><a class="mlink" href="https://unity.com/events-hub"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><span><b>Events</b><span>Global and local events</span></span></a></div><div class="mcol"><h6>Community stories</h6><a class="mlink" href="https://unity.com/made-with-unity"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span><span><b>Made with Unity</b><span>Showcasing Unity creators</span></span></a><a class="mlink" href="https://www.youtube.com/@unity/streams"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9v6l5-3z"/></svg></span><span><b>Livestreams</b><span>Join devs, creators, and insiders</span></span></a><a class="mlink" href="https://unity.com/awards"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></span><span><b>Unity Awards</b><span>Celebrating Unity creators worldwide</span></span></a></div></div></div><div class="ni"><a href="https://learn.unity.com/" class="" aria-haspopup="true" aria-expanded="false">Learning</a><div class="mega"><div class="mcol"><h6>For every level</h6><a class="mlink" href="https://learn.unity.com"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5"/></svg></span><span><b>Unity Learn</b><span>Master Unity skills for free</span></span></a><a class="mlink" href="https://unity.com/learn/professionals"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.4 0 4.2 1.4 5 4"/></svg></span><span><b>Professional training</b><span>Level up your team with Unity trainers</span></span></a></div><div class="mcol"><h6>New to Unity</h6><a class="mlink" href="https://unity.com/learn/get-started"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></span><span><b>Getting started</b><span>Kickstart your learning</span></span></a><a class="mlink" href="https://learn.unity.com/pathway/unity-essentials"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14"/></svg></span><span><b>Unity Essential Pathways</b><span>New to Unity? Start your journey</span></span></a><a class="mlink" href="https://unity.com/how-to"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M8 7h7"/></svg></span><span><b>How-to Guides</b><span>Actionable tips and best practices</span></span></a></div><div class="mcol"><h6>Education</h6><a class="mlink" href="https://unity.com/products/unity-student"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5"/></svg></span><span><b>For students</b><span>Kickstart your career</span></span></a><a class="mlink" href="https://unity.com/solutions/education"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span><b>For educators</b><span>Supercharge your teaching</span></span></a><a class="mlink" href="https://unity.com/products/unity-education-grant-license"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"/></svg></span><span><b>Education Grant License</b><span>Bring Unity’s power to your institution</span></span></a><a class="mlink" href="https://unity.com/products/unity-certifications"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span><span><b>Certifications</b><span>Prove your Unity mastery</span></span></a></div></div></div><div class="ni"><a href="https://unity.com/support-services" class="" aria-haspopup="true" aria-expanded="false">Support</a><div class="mega"><div class="mcol"><h6>Support options</h6><a class="mlink" href="https://unity.com/support-services"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg></span><span><b>Get help</b><span>Helping you succeed with Unity</span></span></a><a class="mlink" href="https://unity.com/products/success-plans"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><span><b>Success plans</b><span>Reach your goals faster with expert support</span></span></a><a class="mlink" href="https://unity.com/faq"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><b>FAQ</b><span>Answers to common questions</span></span></a><a class="mlink" href="https://unity.com/contact-us"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span><span><b>Contact us</b><span>Connect with our team</span></span></a></div></div></div><div class="ni"><a href="https://unity.com/products" class="" >Pricing</a></div></nav>
+  <div class="nav-right">
+    <a class="pill blue" href="#get-started" id="gsOpen">Get started</a>
+    <a class="ico-btn" href="https://unity.com/search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></a>
+    <a class="ico-btn" href="https://assetstore.unity.com/" aria-label="Asset Store"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M4 9h16l-1 11H5z"/><path d="M4 9l2-5h12l2 5M9 13h6"/></svg></a>
+    <a class="ico-btn" href="https://id.unity.com/" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+  </div>
+</header>
+
+<div class="eco-scrim" id="ecoScrim"></div>
+<aside class="eco" id="eco" aria-label="Discover Unity" aria-hidden="true">
+  <div class="eco-glow" id="ecoGlow"></div>
+  <div class="eco-head">
+    <div><h2>Discover <span>Unity</span></h2><p>Every Unity site in one place: build, learn, play and get help.</p></div>
+    <button id="ecoClose" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#eee" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="eco-body" id="ecoBody"></div>
+  <div class="eco-foot">Looking for something else? <a href="https://unity.com/search">Search unity.com</a></div>
+</aside>
+
+<section class="band" id="band">
+  <div class="band-bg" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="band-spot" aria-hidden="true"></div>
+  <div class="band-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Build with AI</p>
+    <h1>Two ways to make games with AI.</h1>
+    <p class="lead">Bring the coding agent you already use into a real Unity project, or start from a single sentence with Unity Spark.</p>
+    <div class="ctas">
+      <a class="ubtn fill" href="agent-setup.html">Connect your agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="ubtn line" href="https://unity.com/spark">Try Unity Spark <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="paths">
+    <article class="path" style="--c:var(--agent)">
+      <div class="path-body">
+        <span class="kicker"><i></i>For people who code with AI</span>
+        <h2>Your agent, inside Unity</h2>
+        <p>Unity’s MCP server, CLI and agent plugin give your assistant real Editor tools, so it can build scenes, write C# and play-test, not just guess.</p>
+        <ul><li>Set up in a few terminal commands</li><li>Works with your Unity ID, projects and AI credits</li><li>Keep full control in the Editor</li></ul>
+        <div class="models">
+          <a class="model" href="agent-setup.html?agent=claude" style="--mc:#d97757"><b>Cl</b>Claude</a>
+          <a class="model" href="agent-setup.html?agent=chatgpt" style="--mc:#10a37f"><b>GP</b>ChatGPT</a>
+          <a class="model" href="agent-setup.html?agent=grok" style="--mc:#cfcfd6"><b>Gk</b>Grok</a>
+          <a class="model" href="agent-setup.html?agent=gemini" style="--mc:#4f8bff"><b>Ge</b>Gemini</a>
+        </div>
+        <a class="ubtn fill go" href="agent-setup.html">Get your setup commands <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="vis term" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/UnityProjects/castle-keep</span></div>
+<pre><span class="ln" style="animation-delay:.2s"><span class="p">$</span> claude "add torches that light up at dusk"</span>
+<span class="ln" style="animation-delay:.9s"><span class="c">● unity · reading Scenes/Keep.unity</span></span>
+<span class="ln" style="animation-delay:1.5s"><span class="c">● unity · created DayNightCycle.cs, TorchController.cs</span></span>
+<span class="ln" style="animation-delay:2.1s"><span class="c">● unity · placed 14 torches on the battlements</span></span>
+<span class="ln" style="animation-delay:2.7s"><span class="ok">✓ Play mode · 0 errors · 60 fps</span></span></pre>
+      </div>
+    </article>
+
+    <article class="path" style="--c:var(--spark)">
+      <div class="path-body">
+        <span class="kicker"><i></i>For anyone with an idea</span>
+        <h2>Unity Spark</h2>
+        <p>Describe the game in your head and play it in minutes. Spark builds with artist-made assets, so your first draft already looks the part. Polish it, then share it.</p>
+        <ul><li>No install, nothing to learn first</li><li>Remix, tweak and play with friends</li><li>Open it in the Editor when you want more control</li></ul>
+        <a class="ubtn fill go" href="https://unity.com/spark" style="margin-top:84px">Try Unity Spark <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="vis spark-vis">
+        <img src="data:image/webp;base64,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" alt="Illustration: a colourful snake game on a purple background.">
+        <span class="play"><i></i>Playable in your browser</span>
+        <div class="bubble"><span class="typed" id="typed"></span><button type="button" onclick="location.href='https://unity.com/spark'">Make it</button></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="which">
+    <div class="w"><small>Never made a game?</small><h3>Start with Spark. You’ll be playing your idea before you finish your coffee.</h3><a href="https://unity.com/spark">Try Unity Spark →</a></div>
+    <div class="w"><small>Already code with AI?</small><h3>Connect your agent and let it work in a real Unity project.</h3><a href="agent-setup.html">Connect your agent →</a></div>
+    <div class="w"><small>Outgrew your prototype?</small><h3>Open your Spark game in the Editor and keep building with your agent.</h3><a href="agent-setup.html">See how it fits together →</a></div>
+  </div>
+
+  <footer class="foot">
+    <span>Copyright © 2026 Unity Technologies · Concept page. Images are illustrated stand-ins.</span>
+    <nav style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://unity.com/legal">Legal</a><a href="https://unity.com/legal/privacy-policy">Privacy Policy</a><a href="https://unity.com/legal/cookie-policy">Cookies</a></nav>
+  </footer>
+</main>
+
+<!-- Get started: full-screen welcome overlay -->
+<div class="gs" id="gs" role="dialog" aria-modal="true" aria-labelledby="gsTitle" aria-hidden="true">
+  <button class="gs-x" id="gsClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <div class="gs-main" id="gsStep1">
+    <div class="gs-logo"><svg viewBox="0 0 29 32" fill="white" aria-hidden="true"><path d="M15.4079 5.72524L20.4728 8.65176C20.656 8.75399 20.6603 9.0394 20.4728 9.14164L14.4537 12.6177C14.2705 12.7242 14.0575 12.7157 13.8871 12.6177L7.86794 9.14164C7.68477 9.0394 7.68051 8.75399 7.86794 8.65176L12.9329 5.7295V0L0 7.46326V22.3898L4.95847 19.5272V13.6784C4.95847 13.4696 5.20128 13.3206 5.38445 13.4356L11.4036 16.9116C11.5868 17.0181 11.689 17.2055 11.689 17.4015V24.3536C11.6933 24.5623 11.4505 24.7114 11.2673 24.6006L6.20234 21.6741L1.24388 24.5367L14.1725 32L27.1012 24.5367L22.1427 21.6741L17.0777 24.6006C16.8988 24.7071 16.6475 24.5708 16.6518 24.3536V17.4015C16.6518 17.1928 16.7668 17.0096 16.9372 16.9116L22.9563 13.4356C23.1352 13.3248 23.3866 13.4654 23.3823 13.6826V19.5314L28.3408 22.394V7.46326L15.4079 0V5.72524Z"/></svg></div>
+    <h2 id="gsTitle">Welcome to Unity!</h2>
+    <div class="gs-list">
+      <div class="gs-card agent" style="--i:0">
+        <button class="gs-agh" type="button" aria-expanded="false" aria-controls="gsAgent" id="gsAgentBtn">
+          <span class="gs-ico" style="background:rgba(63,184,255,.14)"><svg viewBox="0 0 24 24" fill="none" stroke="#5ec4ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M7 9l3 3-3 3M12.5 15H17"/></svg></span>
+          <span class="gs-body"><span class="h3">Start an agentic workflow with your AI tool</span><span class="p">Pick the assistant you already use. We’ll give you the commands to connect it to Unity so it can open, edit and test real projects.</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="gs-drawer" id="gsAgent"><div class="gs-drawer-in"><div class="gs-agx">
+          <div class="gs-agcol">
+            <h4>Copy for terminal</h4>
+            <div class="gs-cpys"><button type="button" class="gs-cpy" data-ag="claude" style="--tc:#d97757"><span class="gs-tl">Cl</span><span class="lbl">Copy Claude</span><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button><button type="button" class="gs-cpy" data-ag="chatgpt" style="--tc:#10a37f"><span class="gs-tl">GP</span><span class="lbl">Copy ChatGPT</span><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button><button type="button" class="gs-cpy" data-ag="grok" style="--tc:#cfcfd6"><span class="gs-tl">Gk</span><span class="lbl">Copy Grok</span><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button><button type="button" class="gs-cpy" data-ag="gemini" style="--tc:#4f8bff"><span class="gs-tl">Ge</span><span class="lbl">Copy Gemini</span><svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button></div>
+            <p class="gs-hint">Paste into your terminal. Your agent will need the Unity Editor and a Unity ID to finish connecting. <a href="agent-setup.html?agent=claude" id="gsGuide">See the full setup guide →</a></p>
+          </div>
+          <div class="gs-agcol">
+            <h4>Download Unity and create your account</h4>
+            <p class="gs-hint">Your agent needs a Unity ID and the Editor.</p>
+            <button class="gs-btn blue gs-wide" type="button" id="gsAcctGo">Create account and get your login connector</button>
+            <a class="gs-btn gs-wide" href="https://unity.com/download"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"/></svg>Download Unity</a>
+          </div>
+        </div></div></div>
+      </div>
+      <div class="gs-card feature" style="--i:1">
+        <span class="gs-ico" style="background:rgba(255,106,162,.16)"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8fbf" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M19 3v4M17 5h4" stroke-linecap="round"/></svg></span>
+        <div><h3>Bring your game idea to life</h3><p>Meet Unity Spark. Describe the game in your head, play it in minutes, then polish and share it. Built on Unity with artist-made assets, so even your first draft looks the part.</p></div>
+        <a class="gs-btn" href="https://unity.com/spark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Try Unity Spark</a>
+      </div>
+      <div class="gs-card more" style="--i:2">
+        <button class="gs-more" type="button" aria-expanded="false" aria-controls="gsMore" id="gsMoreBtn"><span><b>More ways to start</b><small>Download the Editor, advertise or monetize with Unity</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="gs-drawer" id="gsMore"><div class="gs-drawer-in"><div class="gs-sub">
+      <div class="gs-card" style="--i:2">
+        <span class="gs-ico" style="background:rgba(155,92,255,.18)"><svg viewBox="0 0 24 24" fill="none" stroke="#a87bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4M13.5 6l-3 12"/></svg></span>
+        <div><h3>Start building with Unity</h3><p>Everything your team needs to build, launch and scale. Unity 6 is the best version of Unity yet.</p></div>
+        <a class="gs-btn" href="https://unity.com/download"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"/></svg>Download Unity</a>
+      </div>
+      <div class="gs-card" style="--i:3">
+        <span class="gs-ico" style="background:rgba(51,120,230,.18)"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8bff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12l7-7M16 5h3v3"/></svg></span>
+        <div><h3>Acquire high value users at scale</h3><p>Grow a high-quality user base, reach global audiences, and optimize your campaigns powered by Vector.</p></div>
+        <a class="gs-btn" href="https://cloud.unity.com/acquire">Advertise with Unity</a>
+      </div>
+      <div class="gs-card" style="--i:4">
+        <span class="gs-ico" style="background:rgba(47,210,124,.14)"><svg viewBox="0 0 24 24" fill="none" stroke="#38c983" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.8-1.4-1.3-2.5-1.3-1.5 0-2.5.8-2.5 1.9 0 2.6 5.2 1.4 5.2 4.1 0 1.1-1.1 2-2.7 2-1.2 0-2.2-.5-2.6-1.4M12 6.5v1.4M12 16v1.5"/></svg></span>
+        <div><h3>Maximize your revenue</h3><p>Earn revenue and optimize monetization operations with 25+ leading ad networks.</p></div>
+        <a class="gs-btn" href="https://cloud.unity.com/home/products?query=Monetization">Monetize with Unity</a>
+      </div>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="gs-main gs-acct" id="gsStep2" hidden>
+    <button class="gs-back" type="button" id="gsBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Back</button>
+    <div class="gs-logo"><svg viewBox="0 0 29 32" fill="white" aria-hidden="true"><path d="M15.4079 5.72524L20.4728 8.65176C20.656 8.75399 20.6603 9.0394 20.4728 9.14164L14.4537 12.6177C14.2705 12.7242 14.0575 12.7157 13.8871 12.6177L7.86794 9.14164C7.68477 9.0394 7.68051 8.75399 7.86794 8.65176L12.9329 5.7295V0L0 7.46326V22.3898L4.95847 19.5272V13.6784C4.95847 13.4696 5.20128 13.3206 5.38445 13.4356L11.4036 16.9116C11.5868 17.0181 11.689 17.2055 11.689 17.4015V24.3536C11.6933 24.5623 11.4505 24.7114 11.2673 24.6006L6.20234 21.6741L1.24388 24.5367L14.1725 32L27.1012 24.5367L22.1427 21.6741L17.0777 24.6006C16.8988 24.7071 16.6475 24.5708 16.6518 24.3536V17.4015C16.6518 17.1928 16.7668 17.0096 16.9372 16.9116L22.9563 13.4356C23.1352 13.3248 23.3866 13.4654 23.3823 13.6826V19.5314L28.3408 22.394V7.46326L15.4079 0V5.72524Z"/></svg></div>
+    <h2>Create your Unity account</h2>
+    <p class="gs-lead">Your Unity ID links your agent to your projects, Unity Cloud and AI credits. Once you’re in, we’ll give you your login connector and the commands for your assistant.</p>
+    <div class="gs-acct-card">
+      <p class="gs-for">Setting up <b id="gsAgName">your AI tool</b></p>
+      <button class="gs-btn blue gs-wide" type="button" data-acct="create">Create a Unity ID</button>
+      <div class="gs-or"><span>Already have one?</span></div>
+      <button class="gs-btn gs-wide" type="button" data-acct="signin">Sign in with Unity ID</button>
+    </div>
+    <p class="gs-fine">In this concept, sign-in is simulated. No details are collected.</p>
+  </div>
+  <div class="gs-toast" id="gsToast" role="status"></div>
+  <div class="gs-foot">
+    <nav><a href="https://unity.com/legal">Legal</a><a href="https://unity.com/legal/privacy-policy">Privacy Policy</a><a href="https://unity.com/legal/cookie-policy">Cookies</a><a href="#">Your Privacy Choices</a><a href="https://unity.com/legal/do-not-sell-my-personal-information">Do Not Sell or Share My Personal Information</a></nav>
+    <span class="gs-langw"><label class="sr" for="gsLang">Language</label><select class="gs-lang" id="gsLang"><option>English</option><option>日本語</option><option>Français</option><option>Español</option><option>한국어</option><option>中文</option></select></span>
+  </div>
+</div>
+
+<script>
+{ const $ = id => document.getElementById(id);
+/* =================== Get started overlay =================== */
+(function(){
+  const gs = $('gs'); let last;
+  const open = e => { if (e) e.preventDefault(); last = document.activeElement; gs.classList.add('open'); gs.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; gs.scrollTop = 0; $('gsClose').focus({ preventScroll:true }); };
+  const close = () => { gs.classList.remove('open'); gs.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; if (last) last.focus({ preventScroll:true }); };
+  $('gsOpen').addEventListener('click', open);
+  $('gsClose').addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && gs.classList.contains('open')) { e.stopImmediatePropagation(); close(); } }, true);
+  [['gsMoreBtn','gsMore']].forEach(([b,d]) => $(b).addEventListener('click', () => { const o = $(d).classList.toggle('open'); $(b).setAttribute('aria-expanded', o); }));
+  let agent = null;
+  const AGN = { claude:'Claude', grok:'Grok', gemini:'Gemini', chatgpt:'ChatGPT' };
+  // Same commands as agent-setup.html. Unity package names are placeholders for the concept.
+  const MCP = 'npx -y @unity/mcp-server';
+  const CMDS = {
+    claude:['npm install -g @anthropic-ai/claude-code', `claude mcp add unity -- ${MCP}`, 'npx @unity/cli login'],
+    chatgpt:['npm install -g @openai/codex', `codex mcp add unity -- ${MCP}`, 'npx @unity/cli login'],
+    grok:['npm install -g @unity/cli', 'unity agent init --provider grok', 'unity agent connect grok', 'npx @unity/cli login'],
+    gemini:['npm install -g @google/gemini-cli', `gemini mcp add unity ${MCP}`, 'npx @unity/cli login'],
+  };
+  const toast = t => { $('gsToast').textContent = t; $('gsToast').classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => $('gsToast').classList.remove('on'), 1600); };
+  const copyText = async t => { try { await navigator.clipboard.writeText(t); } catch { const a = document.createElement('textarea'); a.value = t; a.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch {} a.remove(); } };
+  $('gsAgentBtn').addEventListener('click', () => { const o = $('gsAgent').classList.toggle('open'); $('gsAgentBtn').setAttribute('aria-expanded', o); });
+  gs.querySelectorAll('.gs-cpy').forEach(b => b.addEventListener('click', async () => {
+    agent = b.dataset.ag; await copyText(CMDS[agent].join('\n'));
+    gs.querySelectorAll('.gs-cpy').forEach(x => x.classList.toggle('done', x === b));
+    $('gsGuide').href = `agent-setup.html?agent=${agent}`;
+    toast(`${AGN[agent]} commands copied. Paste them into your terminal.`);
+  }));
+  const step = n => { $('gsStep1').hidden = n !== 1; $('gsStep2').hidden = n !== 2; gs.scrollTop = 0; };
+  $('gsAcctGo').addEventListener('click', () => { $('gsAgName').textContent = agent ? AGN[agent] : 'your AI tool'; step(2); });
+  $('gsBack').addEventListener('click', () => step(1));
+  gs.querySelectorAll('[data-acct]').forEach(b => b.addEventListener('click', () => { location.href = `agent-setup.html?agent=${agent || 'claude'}&account=${b.dataset.acct}`; }));
+  const _close = close;
+  window.openGetStarted = e => { step(1); open(e); };
+  if (location.hash === '#get-started') { history.replaceState(null, '', location.pathname + location.search); setTimeout(() => window.openGetStarted(), 50); }
+  $('gsOpen').removeEventListener('click', open); $('gsOpen').addEventListener('click', window.openGetStarted);
+})();
+}
+</script>
+<script>
+const $ = id => document.getElementById(id);
+const EXT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+const U = p => /^(https?:|[\w-]+\.html)/.test(p) ? p : 'https://unity.com' + p;
+/* =================== Header nav + mega menus =================== */
+const I = {
+  cube:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5"/>',
+  users:'<circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.4 0 4.2 1.4 5 4"/>',
+  plat:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+  pulse:'<path d="M3 12h4l2-5 4 10 2-5h6"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>',
+  cart:'<path d="M4 5h2l2 10h10l2-7H7"/><circle cx="10" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/>',
+  trend:'<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
+  phone:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>',
+  person:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/>',
+  xr:'<path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4l-3-3-3 3H5a2 2 0 0 1-2-2z"/>',
+  multi:'<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c1-3 3.5-4.5 6-4.5S13 17 14 20M10 20c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/>',
+  doc:'<path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"/>',
+  tool:'<path d="M14 6a4 4 0 0 0 5 5l-8 8a2 2 0 0 1-3-3z"/>',
+  map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14"/>',
+  book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M8 7h7"/>',
+  star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  play:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9v6l5-3z"/>',
+  chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+  cal:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+  cap:'<path d="M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5"/>',
+  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>',
+  factory:'<path d="M3 20V10l6 3V9l6 3V5h6v15z"/>',
+  car:'<path d="M5 16V12l2-5h10l2 5v4z M5 16v2 M19 16v2"/><circle cx="8" cy="13.5" r="1"/><circle cx="16" cy="13.5" r="1"/>',
+  bag:'<path d="M5 8h14l-1 12H6z M9 8a3 3 0 0 1 6 0"/>',
+  robot:'<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01"/>',
+  sparkle:'<path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>',
+};
+const ic = k => `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${I[k]||I.cube}</svg>`;
+const NAV = [
+  { t:'Games', u:'/games', cols:[
+    { h:'Develop', items:[['Unity Engine','Build 2D and 3D games for any platform','/products/unity-engine','cube'],['Collaboration','Collaborate and iterate quickly with your team','/features/collaboration','users']], btns:[['↓ Download Unity','/download'],['Plans and pricing','/products']] },
+    { h:'Deploy', items:[['Multiplatform','Discover 25+ platforms Unity supports','/features/multiplatform','plat'],['LiveOps','Post-launch insights and live game ops','/features/liveops','pulse']] },
+    { h:'Grow', items:[['User acquisition','Get discovered and acquire mobile users','/solutions/user-acquisition','target'],['In-App Purchase','Manage IAP across stores and D2C','/products/iap','cart'],['Monetization','Connect players with the right games','/solutions/app-monetization','trend']], btns:[['Advertise with Unity','https://cloud.unity.com/acquire'],['Monetize with Unity','https://cloud.unity.com/home/products?query=Monetization']] },
+    { h:'Use cases', items:[['Mobile Games','Build & grow mobile hits with Unity','/solutions/mobile','phone'],['Indie Games','Ship big games with small teams','/solutions/indie','person'],['XR Games','Launch XR games across platforms','/solutions/xr/games','xr'],['Multiplayer Games','Simplify multiplayer game development','/features/multiplayer','multi']] },
+  ]},
+  { t:'Build with AI', u:'build-with-ai.html' },
+  { t:'Industry', u:'/industry', cols:[
+    { h:'Use cases', items:[['3D collaboration','Build and review 3D projects in real time','/solutions/immersive-3d-collaboration','users'],['Immersive training','Train in immersive environments','/solutions/immersive-training','xr'],['Robotics','Deploy robotics systems faster','/solutions/robotics','robot'],['Human Machine Interfaces (HMI)','Develop interactive 3D embedded systems','/solutions/human-machine-interface-hmi','plat']] },
+    { h:'Industries', items:[['Manufacturing','Achieve operational excellence','/solutions/manufacturing','factory'],['Retail','Transform in-store experiences into online ones','/solutions/retail','bag'],['Automotive','Boost innovation and in-car experiences','/solutions/automotive','car']], btns:[['See all industries','/industry/find-your-industry']] },
+  ]},
+  { t:'Resources', u:'/resources', cols:[
+    { h:'Technical library', items:[['Documentation','Official user manuals and API references','https://docs.unity.com','doc'],['Developer tools','Release versions and issue tracker','/developer-tools','tool'],['Roadmap','Review upcoming features','/roadmap','map'],['Glossary','Library of technical terms','/glossary','book']] },
+    { h:'Insights', items:[['Case studies','Real-world success stories','/resources?type=case-study','star'],['Best practice guides','Expert tips and tricks','https://docs.unity3d.com/6000.0/Documentation/Manual/best-practice-guides.html','book'],['Demos','Demos, samples, and building blocks','/demos','play']], btns:[['All resources','/resources']] },
+    { h:"What's new", items:[['Blog','Updates, information, and technical tips','/blog','doc'],['News','News, stories, and press center','/news','chat']] },
+  ]},
+  { t:'Community', u:'/community', cols:[
+    { h:'Community Hub', items:[['Discussions','Discuss, problem-solve, and connect','https://discussions.unity.com/','chat'],['Events','Global and local events','/events-hub','cal']] },
+    { h:'Community stories', items:[['Made with Unity','Showcasing Unity creators','/made-with-unity','star'],['Livestreams','Join devs, creators, and insiders','https://www.youtube.com/@unity/streams','play'],['Unity Awards','Celebrating Unity creators worldwide','/awards','sparkle']] },
+  ]},
+  { t:'Learning', u:'https://learn.unity.com/', cols:[
+    { h:'For every level', items:[['Unity Learn','Master Unity skills for free','https://learn.unity.com','cap'],['Professional training','Level up your team with Unity trainers','/learn/professionals','users']] },
+    { h:'New to Unity', items:[['Getting started','Kickstart your learning','/learn/get-started','sparkle'],['Unity Essential Pathways','New to Unity? Start your journey','https://learn.unity.com/pathway/unity-essentials','map'],['How-to Guides','Actionable tips and best practices','/how-to','book']] },
+    { h:'Education', items:[['For students','Kickstart your career','/products/unity-student','cap'],['For educators','Supercharge your teaching','/solutions/education','person'],['Education Grant License',"Bring Unity’s power to your institution",'/products/unity-education-grant-license','doc'],['Certifications','Prove your Unity mastery','/products/unity-certifications','star']] },
+  ]},
+  { t:'Support', u:'/support-services', cols:[
+    { h:'Support options', items:[['Get help','Helping you succeed with Unity','/support-services','help'],['Success plans','Reach your goals faster with expert support','/products/success-plans','trend'],['FAQ','Answers to common questions','/faq','chat'],['Contact us','Connect with our team','/contact-us','person']] },
+  ]},
+  { t:'Pricing', u:'/products' },
+];
+// Nav links are written into the HTML above (static hrefs); this script only adds the hover menus.
+let megaT;
+document.querySelectorAll('.ni').forEach(ni => {
+  const open = () => { clearTimeout(megaT); document.querySelectorAll('.ni.open').forEach(o => o !== ni && o.classList.remove('open')); if (ni.querySelector('.mega')) { ni.classList.add('open'); ni.firstElementChild.setAttribute('aria-expanded','true'); } };
+  const close = () => { megaT = setTimeout(() => { ni.classList.remove('open'); ni.firstElementChild.setAttribute('aria-expanded','false'); }, 120); };
+  ni.addEventListener('mouseenter', open); ni.addEventListener('mouseleave', close);
+  ni.addEventListener('focusin', open); ni.addEventListener('focusout', close);
+});
+
+/* =================== Discover Unity drawer (Unity Learn last in the first list) =================== */
+const SITES = [
+  { group:'Build and learn', name:'Asset Store',  domain:'assetstore.unity.com', url:'https://assetstore.unity.com/', desc:'Assets, tools and templates', color:'#306bc0' },
+  { group:'Build and learn', name:'Documentation',domain:'docs.unity.com', url:'https://docs.unity.com', desc:'Manuals and API reference', color:'#9fb3d9' },
+  { group:'Build and learn', name:'Unity Spark',  domain:'unity.com/spark', url:'https://unity.com/spark', desc:'Prompt a playable prototype (beta)', color:'#e0559a' },
+  { group:'Build and learn', name:'Unity Cloud',  domain:'cloud.unity.com', url:'https://cloud.unity.com', desc:'DevOps, multiplayer and Grow dashboard', color:'#6b5bff' },
+  { group:'Build and learn', name:'Unity Learn',  domain:'learn.unity.com', url:'https://learn.unity.com/', desc:'Free pathways, tutorials and courses', color:'#14b86b' },
+  { group:'Community', name:'Discussions',  domain:'discussions.unity.com', url:'https://discussions.unity.com/', desc:'Ask, answer and connect', color:'#e8682f' },
+  { group:'Community', name:'Unity Play',   domain:'play.unity.com', url:'https://play.unity.com/en', desc:'Play and share browser games and jams', color:'#d63c44' },
+  { group:'Community', name:'GitHub',       domain:'github.com/Unity-Technologies', url:'https://github.com/Unity-Technologies', desc:'Open-source repos and the agent plugin', color:'#a0a0ff' },
+  { group:'Community', name:'Livestreams',  domain:'youtube.com/@unity', url:'https://www.youtube.com/@unity/streams', desc:'Live with devs, creators and insiders', color:'#ff4545' },
+  { group:'Help', name:'Support & Knowledge Base', domain:'support.unity.com', url:'https://support.unity.com/hc/en-us', desc:'Answers, articles and tickets', color:'#11898a' },
+  { group:'Help', name:'Issue Tracker', domain:'issuetracker.unity3d.com', url:'https://issuetracker.unity3d.com', desc:'Known bugs and fixes. Vote on them.', color:'#c9a227' },
+  { group:'Help', name:'Service Status', domain:'status.unity.com', url:'https://status.unity.com', desc:'Live status for every Unity service', color:'#23955d' },
+  { group:'Company', name:'Unite Tokyo', domain:'unitetokyo.com', url:'https://unitetokyo.com/', desc:'Nov 17, 2026 · Japan’s largest Unity event', color:'#b8338a' },
+  { group:'Company', name:'Investor Relations', domain:'investors.unity.com', url:'https://investors.unity.com/', desc:'Results, filings and events', color:'#c0c0d0' },
+];
+let ecoN = 0;
+$('ecoBody').innerHTML = [...new Set(SITES.map(s => s.group))].map(g => `<div class="eco-group">/ ${g.toUpperCase()}</div>` + SITES.filter(s => s.group === g).map(s => { const n = ++ecoN; return `
+  <a class="eco-link" href="${s.url}" target="_blank" rel="noopener" style="--c:${s.color};--i:${n}" data-c="${s.color}">
+    <span class="num">${String(n).padStart(2,'0')}</span><span><b>${s.name}</b><span class="d">${s.desc}</span></span><span class="dom">${s.domain} ${EXT}</span></a>`; }).join('')).join('');
+$('ecoBody').addEventListener('mouseover', e => {
+  const a = e.target.closest('.eco-link'); if (!a) return;
+  $('ecoGlow').style.setProperty('--glow', a.dataset.c);
+  $('ecoGlow').style.setProperty('--gy', (a.offsetTop - $('ecoBody').scrollTop - 120) + 'px');
+});
+const setEco = open => {
+  document.body.classList.toggle('eco-open', open);
+  $('ecoBtn').setAttribute('aria-expanded', open);
+  $('eco').setAttribute('aria-hidden', !open);
+  if (open) $('ecoClose').focus({ preventScroll:true });
+};
+$('ecoBtn').onclick = () => setEco(!document.body.classList.contains('eco-open'));
+$('ecoClose').onclick = $('ecoScrim').onclick = () => setEco(false);
+
+addEventListener('keydown', e => { if (e.key === 'Escape') setEco(false); });
+(function(){ const nav = $('nav'), band = $('band'); const upd = () => nav.classList.toggle('scrolled', band.getBoundingClientRect().bottom < 56); addEventListener('scroll', upd, { passive:true }); upd(); })();
+document.querySelectorAll('.ni>a').forEach(a => { if (a.getAttribute('href') === 'build-with-ai.html') a.setAttribute('aria-current','page'); });
+// Gradient follows the mouse
+(function(){
+  const band = document.getElementById('band'), blobs = [...band.querySelectorAll('.band-bg span')], amt = [[-140,-90],[120,70],[-60,110]];
+  let tx = .5, ty = .5, x = .5, y = .5, t0 = performance.now();
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  band.addEventListener('pointermove', e => { const r = band.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; });
+  band.addEventListener('pointerleave', () => { tx = .5; ty = .5; });
+  (function tick(now){ x += (tx - x) * .06; y += (ty - y) * .06; const t = (now - t0) / 1000;
+    band.style.setProperty('--mx', x.toFixed(4)); band.style.setProperty('--my', y.toFixed(4));
+    blobs.forEach((b, i) => { const dx = (x - .5) * 2 * amt[i][0] + (still ? 0 : Math.sin(t * .25 + i * 2) * 40), dy = (y - .5) * 2 * amt[i][1] + (still ? 0 : Math.cos(t * .2 + i) * 30); b.style.transform = `translate(${-dx}px,${-dy}px)`; });
+    requestAnimationFrame(tick); })(t0);
+})();
+// Spark prompt types itself
+(function(){
+  const el = document.getElementById('typed'), P = ['A snake that grows when it eats stars','A cozy farming game where a cat gives you quests','A castle defense game set in the 1600s'];
+  let i = 0;
+  const run = async () => { const s = P[i++ % P.length]; for (let n = 0; n <= s.length; n++) { el.textContent = s.slice(0, n); await new Promise(r => setTimeout(r, 38)); } setTimeout(run, 2200); };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) el.textContent = P[0]; else run();
+})();
+</script>
+</body>
+</html>
